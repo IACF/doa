@@ -24,20 +24,22 @@ public class Doa2 {
         s.setFatorRh("-");
         System.out.println("executou");
         Individuo i = new Individuo();
-        i.setAltura(1.9);
-        i.setCheckUp(false);
-        i.setCpf("85918095560");
-        i.setDataNascimento("08/10/1995");
-        i.setDoadorMedula(true);
-        i.setNome("Joao Pereira");
-        i.setObservacoes("alguma coisa");
-        i.setOrgaoExp("SSP");
-        i.setUf("BA");
-        i.setPeso(75.6);
-        i.setRg("1587486890");
-        i.setSangue_id(s.getId());
-        i.setTelefone("99999998888");
-        i.save();
+        i = i.find("85918095570");
+        System.out.println(i.getNome());
+//        i.setAltura(1.9);
+//        i.setCheckUp(false);
+//        i.setCpf("85918095570");
+//        i.setDataNascimento("08/10/1995");
+//        i.setDoadorMedula(true);
+//        i.setNome("José testes");
+//        i.setObservacoes("alguma coisa");
+//        i.setOrgaoExp("SSP");
+//        i.setUf("PE");
+//        i.setPeso(75.6);
+//        i.setRg("1587486890");
+//        i.setSangue_id(s.getId());
+//        i.setTelefone("99998998888");
+//        i.update();
         
     }
     

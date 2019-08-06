@@ -73,12 +73,13 @@ public class IndividuoDAO implements IDAO<Object>{
             "orgaoExp",
             "dataNascimento",
             "uf",
-            "doadorMedula",
             "altura",
+            "doadorMedula",
             "peso",
             "checkUp",
             "telefone",
             "observacoes",
+            "sangue_id"
         };
         String values[] = {
             individuo.getNome(),
@@ -87,12 +88,13 @@ public class IndividuoDAO implements IDAO<Object>{
             individuo.getOrgaoExp(),
             individuo.getDataNascimento().toString(),
             individuo.getUf(),
-            individuo.getDoadorMedula().toString(),
             individuo.getAltura().toString(),
+            Integer.toString(individuo.getDoadorMedula() ? 1 : 0),
             individuo.getPeso().toString(),
-            individuo.getCheckUp().toString(),
+            Integer.toString(individuo.getCheckUp() ? 1 : 0),
             individuo.getTelefone(),
             individuo.getObservacoes(),
+            Integer.toString(individuo.getSangue_id())
         };
         
         database.update(table, individuo.getCpf(), fields, values);
@@ -105,6 +107,7 @@ public class IndividuoDAO implements IDAO<Object>{
 
     public Individuo find(String cpf) {
         ArrayList<String> result = database.find(table, cpf);
+        System.out.println(result);
         try {
             mapToInviduo(individuo, result);
         } catch (NullPointerException ex) {
@@ -115,18 +118,18 @@ public class IndividuoDAO implements IDAO<Object>{
     
     public void mapToInviduo(Individuo e, ArrayList<String> linha) {
         e.setCpf(linha.get(0));
-        e.setAltura(Double.parseDouble(linha.get(1)));
-        e.setCheckUp(Boolean.parseBoolean(linha.get(0)));
-        e.setDataNascimento(linha.get(0));
-        e.setDoadorMedula(Boolean.parseBoolean(linha.get(0)));
-        e.setNome(linha.get(0));
-        e.setObservacoes(linha.get(0));
-        e.setOrgaoExp(linha.get(0));
-        e.setPeso(Double.parseDouble(linha.get(0)));
-        e.setRg(linha.get(0));
-        e.setSangue_id(Integer.parseInt(linha.get(0)));
-        e.setTelefone(linha.get(0));
-        e.setUf(linha.get(0));
+        e.setAltura(Double.parseDouble(linha.get(7)));
+        e.setCheckUp(Boolean.parseBoolean(linha.get(9)));
+        e.setDataNascimento(linha.get(4));
+        e.setDoadorMedula(Boolean.parseBoolean(linha.get(6)));
+        e.setNome(linha.get(2));
+        e.setObservacoes(linha.get(11));
+        e.setOrgaoExp(linha.get(3));
+        e.setPeso(Double.parseDouble(linha.get(8)));
+        e.setRg(linha.get(1));
+        e.setSangue_id(Integer.parseInt(linha.get(12)));
+        e.setTelefone(linha.get(10));
+        e.setUf(linha.get(5));
     }
 
     @Override

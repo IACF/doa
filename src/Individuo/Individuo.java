@@ -86,7 +86,7 @@ public class Individuo implements IDAO<Object>{
     }
 
     public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = LocalDate.parse(dataNascimento, formatador);
+        this.dataNascimento = LocalDate.parse(formatDate(dataNascimento), formatador);
     }
 
     public String getUf() {
@@ -177,5 +177,10 @@ public class Individuo implements IDAO<Object>{
     @Override
     public Object find(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }  
+    }
+    
+    public String formatDate(String date) {
+        String[] d = date.split("-");
+        return d[2]+"/"+d[1]+"/"+d[0];
+    }
 }
