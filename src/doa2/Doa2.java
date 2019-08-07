@@ -5,6 +5,7 @@
  */
 package doa2;
 
+import BolsaDeSangue.BolsaDeSangue;
 import Individuo.Individuo;
 import Sangue.Sangue;
 
@@ -20,12 +21,15 @@ public class Doa2 {
     public static void main(String[] args) {
         // TODO code application logic here
         Sangue s = new Sangue();
-        s.setTipoSanguineo("A");
+        s.setTipoSanguineo("AB");
         s.setFatorRh("-");
         System.out.println("executou");
         Individuo i = new Individuo();
         i = i.find("85918095570");
         System.out.println(i.getNome());
+        BolsaDeSangue b = new BolsaDeSangue(s.getId());
+//        b.save();
+        b.retirada(s.getId());
 //        i.setAltura(1.9);
 //        i.setCheckUp(false);
 //        i.setCpf("85918095570");

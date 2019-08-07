@@ -45,9 +45,9 @@ public class BolsaDeSangueDAO implements IDAO<Object>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public void retirada(String sangue_id) {
-        String query = "DELETE FROM `" + table + "` where `sangue_id`=" + sangue_id + "LIMIT 1";
-        database.query(query);
+    public void retirada(int sangue_id) {
+        String query = "DELETE FROM `" + table + "` where `sangue_id`='" + sangue_id + " 'LIMIT 1";
+        database.command(query);
     }
 
     @Override

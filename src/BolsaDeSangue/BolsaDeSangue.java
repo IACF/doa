@@ -75,7 +75,7 @@ public class BolsaDeSangue implements IDAO<Object>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public void retirada(String sangue_id) {
+    public void retirada(int sangue_id) {
         this.dao.retirada(sangue_id);
     }
 }
