@@ -78,4 +78,10 @@ public class BolsaDeSangue implements IDAO<Object>{
     public void retirada(int sangue_id) {
         this.dao.retirada(sangue_id);
     }
+
+    @SuppressWarnings("empty-statement")
+    public int quantidade(int sangue_id) {
+        ArrayList<String> result = this.dao.quantidade(sangue_id);;
+        return Integer.parseInt(result.get(0));
+    }
 }

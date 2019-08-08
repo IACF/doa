@@ -107,7 +107,6 @@ public class IndividuoDAO implements IDAO<Object>{
 
     public Individuo find(String cpf) {
         ArrayList<String> result = database.find(table, cpf);
-        System.out.println(result);
         try {
             mapToInviduo(individuo, result);
         } catch (NullPointerException ex) {

@@ -59,4 +59,10 @@ public class BolsaDeSangueDAO implements IDAO<Object>{
     public ArrayList<Object> get() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public ArrayList<String> quantidade(int sangue_id) {
+        String query = "SELECT COUNT(*) FROM `" + table + "` where `sangue_id`='" + sangue_id + "'";
+        ArrayList<ArrayList<String>> rs = database.query(query);
+        return rs.size() > 0 ? rs.get(0) : null;
+    }
 }
