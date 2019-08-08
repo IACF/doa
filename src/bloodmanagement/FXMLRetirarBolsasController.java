@@ -5,9 +5,10 @@
  */
 package bloodmanagement;
 
+import BolsaDeSangue.BolsaDeSangue;
+import Sangue.Sangue;
 import bloodmanagementmodels.FatorRH;
 import bloodmanagementmodels.TipoSangue;
-import bloodmanagementmodels.Registros;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +53,15 @@ public class FXMLRetirarBolsasController implements Initializable {
     private final List<FatorRH> rh = new ArrayList<>();
     private ObservableList<FatorRH> obsRh;
     
-    Registros registro = new Registros();
+    Sangue sAMais, sBMais, sABMais, sOMais,
+            sAMenos, sBMenos, sABMenos, sOMenos,
+            sANull, sBNull, sABNull, sONull;
+    
+    BolsaDeSangue AMais, BMais, ABMais, OMais,
+                  AMenos, BMenos, ABMenos, OMenos,
+                  ANull, BNull, ABNull, ONull;
+    
+    private boolean flagQtd, flagSangue;
     
     /**
      * Initializes the controller class.
@@ -69,18 +78,23 @@ public class FXMLRetirarBolsasController implements Initializable {
         
             try{
                 quantidadePedida = Integer.parseInt(txtQTD.getText());
+                flagQtd = true;
             }catch(NumberFormatException e){
                 Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
                 dialogoErro.setTitle("ERRO");
                 dialogoErro.setHeaderText("Dado inválido digitado!!");
                 dialogoErro.showAndWait();
+                flagQtd = false;
             }
         
-            if(quantidadePedida <= 0){
+            if(flagQtd &&(quantidadePedida <= 0)){
                 Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
                 dialogoErro.setTitle("ERRO");
                 dialogoErro.setHeaderText("Quantidade de bolsas inválida digitada!!");
                 dialogoErro.showAndWait();
+                flagQtd = false;
+            }else{
+                flagQtd = true;
             }
             
             if(cbTipo.getValue() == null ||cbRH.getValue() == null){
@@ -89,92 +103,137 @@ public class FXMLRetirarBolsasController implements Initializable {
                 dialogoErro.setHeaderText("Tipo de sangue e/ou tipo de RH não " +
                                           "foram selecionados!!");
                 dialogoErro.showAndWait();
+                flagSangue = false;
+            }else{
+                flagSangue = true;
+            }
+            if(flagSangue && flagQtd){
+                switch (cbRH.getValue().getNome()) {
+                    case "+":
+                        switch(cbTipo.getValue().getNome()){
+                            case "A":
+                                quantidadeBanco = Integer.parseInt(lblAMais.getText());
+                                break;
+                            case "B":
+                                quantidadeBanco = Integer.parseInt(lblBMais.getText());
+                                break;
+                            case "AB":
+                                quantidadeBanco = Integer.parseInt(lblABMais.getText());
+                                break;
+                            case "O":
+                                quantidadeBanco = Integer.parseInt(lblOMais.getText());
+                                break;
+                        }
+                        break;
+                    case "-":
+                        switch(cbTipo.getValue().getNome()){
+                            case "A":
+                                quantidadeBanco = Integer.parseInt(lblAMenos.getText());
+                                break;
+                            case "B":
+                                quantidadeBanco = Integer.parseInt(lblBMenos.getText());
+                                break;
+                            case "AB":
+                                quantidadeBanco = Integer.parseInt(lblABMenos.getText());
+                                break;
+                            case "O":
+                                quantidadeBanco = Integer.parseInt(lblOMenos.getText());
+                                break;
+                        }
+                        break;
+                    default:
+                        switch(cbTipo.getValue().getNome()){
+                            case "A":
+                                quantidadeBanco = Integer.parseInt(lblANull.getText());
+                                break;
+                            case "B":
+                                quantidadeBanco = Integer.parseInt(lblBNull.getText());
+                                break;
+                            case "AB":
+                                quantidadeBanco = Integer.parseInt(lblABNull.getText());
+                                break;
+                            case "O":
+                                quantidadeBanco = Integer.parseInt(lblONull.getText());
+                                break;
+                        }
+                        break;
+                }
+        
+                if(quantidadeBanco < quantidadePedida){
+                    Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                    dialogoAviso.setTitle("AVISO");
+                    dialogoAviso.setHeaderText("Não foi possível obter a quantidade desejada!!");
+                    dialogoAviso.showAndWait();
+                    BloodManagement.mudarTela("principal", 0);
+                }else{
+                
+                    //AQUI FAZ A ALTERAÇÃO DO NÚMERO DE BOLSAS
+                    
+                    switch (cbRH.getValue().getNome()) {
+                    case "+":
+                        switch(cbTipo.getValue().getNome()){
+                            case "A":
+                                AMais.retirada(sAMais.getId(),quantidadePedida);
+                                break;
+                            case "B":
+                                BMais.retirada(sBMais.getId(),quantidadePedida);
+                                break;
+                            case "AB":
+                                ABMais.retirada(sABMais.getId(),quantidadePedida);
+                                break;
+                            case "O":
+                                OMais.retirada(sOMais.getId(),quantidadePedida);
+                                break;
+                        }
+                        break;
+                    case "-":
+                        switch(cbTipo.getValue().getNome()){
+                            case "A":
+                                AMenos.retirada(sAMenos.getId(),quantidadePedida);
+                                break;
+                            case "B":
+                                BMenos.retirada(sBMenos.getId(),quantidadePedida);
+                                break;
+                            case "AB":
+                                ABMenos.retirada(sABMenos.getId(),quantidadePedida);
+                                break;
+                            case "O":
+                                OMenos.retirada(sOMenos.getId(),quantidadePedida);
+                                break;
+                        }
+                        break;
+                    default:
+                        switch(cbTipo.getValue().getNome()){
+                            case "A":
+                                ANull.retirada(sANull.getId(),quantidadePedida);
+                                break;
+                            case "B":
+                                ANull.retirada(sANull.getId(),quantidadePedida);
+                                break;
+                            case "AB":
+                                ANull.retirada(sANull.getId(),quantidadePedida);
+                                break;
+                            case "O":
+                                ANull.retirada(sANull.getId(),quantidadePedida);
+                                break;
+                        }
+                        break;
+                }
+                    
+                    Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
+                    dialogoInfo.setTitle("SUCESSO");
+                    dialogoInfo.setHeaderText("Retirada efetuada com sucesso!!");
+                    dialogoInfo.showAndWait();
+                    BloodManagement.mudarTela("principal", 0);
+                }
             }
             
-            switch (cbRH.getValue().getNome()) {
-                case "+":
-                    switch(cbTipo.getValue().getNome()){
-                        case "A":
-                            //quantidadeBanco = registros.getAMais();
-                            quantidadeBanco = Integer.parseInt(lblAMais.getText());
-                            break;
-                        case "B":
-                            //quantidadeBanco = registros.getBMais();
-                            quantidadeBanco = Integer.parseInt(lblBMais.getText());
-                            break;
-                        case "AB":
-                            //quantidadeBanco = registros.getABMais();
-                            quantidadeBanco = Integer.parseInt(lblABMais.getText());
-                            break;
-                        case "O":
-                            //quantidadeBanco = registros.getOMais();
-                            quantidadeBanco = Integer.parseInt(lblOMais.getText());
-                            break;
-                    }
-                    break;
-                case "-":
-                    switch(cbTipo.getValue().getNome()){
-                        case "A":
-                            //quantidadeBanco = registros.getAMenos();
-                            quantidadeBanco = Integer.parseInt(lblAMenos.getText());
-                            break;
-                        case "B":
-                            //quantidadeBanco = registros.getBMenos();
-                            quantidadeBanco = Integer.parseInt(lblBMenos.getText());
-                            break;
-                        case "AB":
-                            //quantidadeBanco = registros.getABMenos();
-                            quantidadeBanco = Integer.parseInt(lblABMenos.getText());
-                            break;
-                        case "O":
-                            //quantidadeBanco = registros.getOMenos();
-                            quantidadeBanco = Integer.parseInt(lblOMenos.getText());
-                            break;
-                    }
-                    break;
-                default:
-                    switch(cbTipo.getValue().getNome()){
-                        case "A":
-                            //quantidadeBanco = registros.getANull();
-                            quantidadeBanco = Integer.parseInt(lblANull.getText());
-                            break;
-                        case "B":
-                            //quantidadeBanco = registros.getBNull();
-                            quantidadeBanco = Integer.parseInt(lblBNull.getText());
-                            break;
-                        case "AB":
-                            //quantidadeBanco = registros.getABNull();
-                            quantidadeBanco = Integer.parseInt(lblABNull.getText());
-                            break;
-                        case "O":
-                            //quantidadeBanco = registros.getONull();
-                            quantidadeBanco = Integer.parseInt(lblONull.getText());
-                            break;
-                    }
-                    break;
-            }
-        
-            if(quantidadeBanco < quantidadePedida){
-                Alert dialogoErro = new Alert(Alert.AlertType.WARNING);
-                dialogoErro.setTitle("AVISO");
-                dialogoErro.setHeaderText("Não foi possível obter a quantidade desejada!!");
-                dialogoErro.showAndWait();
-                BloodManagement.mudarTela("principal", 0);
-            }else{
-                
-                //AQUI FAZ A ALTERAÇÃO DO NÚMERO DE BOLSAS
-                
-                Alert dialogoErro = new Alert(Alert.AlertType.INFORMATION);
-                dialogoErro.setTitle("SUCESSO");
-                dialogoErro.setHeaderText("Retirada efetuada com sucesso!!");
-                dialogoErro.showAndWait();
-                BloodManagement.mudarTela("principal", 0);
-            }
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        carregarBolsas();
         carregarTiposSangue();
         carregarFatoresRH();
         carregarQuantidades();
@@ -214,32 +273,73 @@ public class FXMLRetirarBolsasController implements Initializable {
     }
     
     public void carregarQuantidades(){
-        // aqui entra a conexão com o banco, linkando com as variáveis lbl
-        String teste = "olá";
+        // Aqui entra a conexão com o banco, linkando com as variáveis lbl
         
-        //lblAMais.setText(Integer.toString(registro.getAMais()));
-        lblAMais.setText(teste);
-        //lblBMais.setText(Integer.toString(registro.getBMais()));
-        lblBMais.setText(teste);
-        //lblABMais.setText(Integer.toString(registro.getABMais()));
-        lblABMais.setText(teste);
-        //lblOMais.setText(Integer.toString(registro.getOMais()));
-        lblOMais.setText(teste);
-        //lblAMenos.setText(Integer.toString(registro.getAMenos()));
-        lblAMenos.setText(teste);
-        //lblBMenos.setText(Integer.toString(registro.getBMenos()));
-        lblBMenos.setText(teste);
-        //lblABMenos.setText(Integer.toString(registro.getABMenos()));
-        lblABMenos.setText(teste);
-        //lblOMenos.setText(Integer.toString(registro.getOMenos()));
-        lblOMenos.setText(teste);
-        //lblANull.setText(Integer.toString(registro.getANull()));
-        lblANull.setText(teste);
-        //lblBNull.setText(Integer.toString(registro.getBNull()));
-        lblBNull.setText(teste);
-        //lblABNull.setText(Integer.toString(registro.getABNull()));
-        lblABNull.setText(teste);
-        //lblONull.setText(Integer.toString(registro.getONull()));
-        lblONull.setText(teste);
+        lblAMais.setText(Integer.toString(AMais.quantidade(sAMais.getId())));
+        lblBMais.setText(Integer.toString(BMais.quantidade(sBMais.getId())));
+        lblABMais.setText(Integer.toString(ABMais.quantidade(sABMais.getId())));
+        lblOMais.setText(Integer.toString(OMais.quantidade(sOMais.getId())));
+        
+        
+        lblAMenos.setText(Integer.toString(AMenos.quantidade(sAMenos.getId())));
+        lblBMenos.setText(Integer.toString(BMenos.quantidade(sBMenos.getId())));
+        lblABMenos.setText(Integer.toString(ABMenos.quantidade(sABMenos.getId())));
+        lblOMenos.setText(Integer.toString(OMenos.quantidade(sOMenos.getId())));
+        
+        lblANull.setText(Integer.toString(ANull.quantidade(sANull.getId())));
+        lblBNull.setText(Integer.toString(BNull.quantidade(sBNull.getId())));
+        lblABNull.setText(Integer.toString(ABNull.quantidade(sABNull.getId())));
+        lblONull.setText(Integer.toString(ONull.quantidade(sONull.getId())));
+        
+    }
+    
+    public void carregarBolsas(){
+        sAMais.setTipoSanguineo("A");
+        sAMais.setFatorRh("+");
+        AMais = new BolsaDeSangue(sAMais.getId());
+        
+        sBMais.setTipoSanguineo("B");
+        sBMais.setFatorRh("+");
+        BMais = new BolsaDeSangue(sBMais.getId());
+        
+        sABMais.setTipoSanguineo("AB");
+        sABMais.setFatorRh("+");
+        ABMais = new BolsaDeSangue(sBMais.getId());
+        
+        sOMais.setTipoSanguineo("O");
+        sOMais.setFatorRh("+");
+        OMais = new BolsaDeSangue(sOMais.getId());
+        
+        sAMenos.setTipoSanguineo("A");
+        sAMenos.setFatorRh("-");
+        AMenos = new BolsaDeSangue(sAMenos.getId());
+        
+        sBMenos.setTipoSanguineo("B");
+        sBMenos.setFatorRh("-");
+        BMenos = new BolsaDeSangue(sBMenos.getId());
+        
+        sABMenos.setTipoSanguineo("AB");
+        sABMenos.setFatorRh("-");
+        ABMenos = new BolsaDeSangue(sABMenos.getId());
+        
+        sOMenos.setTipoSanguineo("O");
+        sOMenos.setFatorRh("-");
+        OMenos = new BolsaDeSangue(sOMenos.getId());
+        
+        sANull.setTipoSanguineo("A");
+        sANull.setFatorRh("Null");
+        ANull = new BolsaDeSangue(sANull.getId());
+        
+        sBNull.setTipoSanguineo("B");
+        sBNull.setFatorRh("Null");
+        BNull = new BolsaDeSangue(sBNull.getId());
+        
+        sABNull.setTipoSanguineo("AB");
+        sABNull.setFatorRh("Null");
+        ABNull = new BolsaDeSangue(sABNull.getId());
+        
+        sONull.setTipoSanguineo("O");
+        sONull.setFatorRh("Null");
+        ONull = new BolsaDeSangue(sONull.getId());
     }
 }

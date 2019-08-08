@@ -5,10 +5,11 @@
  */
 package bloodmanagement;
 
+import Individuo.Individuo;
+import Sangue.Sangue;
 import bloodmanagementmodels.Estados;
 import bloodmanagementmodels.FatorRH;
 import bloodmanagementmodels.TipoSangue;
-import bloodmanagementmodels.Pessoa;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -99,6 +100,8 @@ public class FXMLCadastrar_UserController implements Initializable {
     
     private LocalDate nascimento;
     
+    private boolean flagPeso, flagAltura, flagTel, flagRG, flagCPF, flagNasc;
+    
     @FXML
     private void voltarTelaInincial(ActionEvent event) throws Exception{
         BloodManagement.mudarTela("principal", 0);
@@ -140,15 +143,17 @@ public class FXMLCadastrar_UserController implements Initializable {
             
             try{
                 nascimento = dpNasc.getValue();
+                flagNasc = true;
             }catch(NumberFormatException e){
                 Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
                 dialogoErro.setTitle("ERRO");
                 dialogoErro.setHeaderText("Data de nascimento inválida, verificar campo\n" +
                                           "antes de confirmar inscrição!");
                 dialogoErro.showAndWait();
+                flagNasc = false;
             }
             
-            if((sistema.getYear() - dpNasc.getValue().getYear()) <= 18){
+            if(flagNasc && ((sistema.getYear() - dpNasc.getValue().getYear()) <= 18)){
                 if (((sistema.getYear() - dpNasc.getValue().getYear()) == 18)&&
                    ((sistema.getDayOfYear() - dpNasc.getValue().getDayOfYear()) < 0)){
                     Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
@@ -158,7 +163,7 @@ public class FXMLCadastrar_UserController implements Initializable {
                     dialogoAviso.showAndWait();
                     BloodManagement.mudarTela("principal", 0);
                 }
-            }else if ((sistema.getYear() - dpNasc.getValue().getYear()) >= 69){
+            }else if (flagNasc && ((sistema.getYear() - dpNasc.getValue().getYear()) >= 69)){
                 if (((sistema.getYear() - dpNasc.getValue().getYear()) == 69)&&
                    ((sistema.getDayOfYear() - dpNasc.getValue().getDayOfYear()) >= 0)){
                     Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
@@ -171,108 +176,145 @@ public class FXMLCadastrar_UserController implements Initializable {
             }else{           
                     try{
                         peso = Float.parseFloat(txtPeso.getText());
+                        flagPeso = true;
                     }catch(NumberFormatException e){
                         Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
                         dialogoErro.setTitle("ERRO");
                         dialogoErro.setHeaderText("Peso inválido digitado!!");
                         dialogoErro.showAndWait();
+                        flagPeso = false;
                     }
-            
-                    if (peso < 50){
-                        Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
-                        dialogoAviso.setTitle("AVISO");
-                        dialogoAviso.setHeaderText("Candidato a doador incapacitado de doar sangue,");
-                        dialogoAviso.setContentText("porque possui peso abaixo do permitido");
-                        dialogoAviso.showAndWait();
-                        BloodManagement.mudarTela("principal", 0);
+                    
+                    if(flagPeso && (peso <=0)){
+                        Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
+                        dialogoErro.setTitle("ERRO");
+                        dialogoErro.setHeaderText("Peso inválido digitado!!");
+                        dialogoErro.showAndWait();
+                        flagPeso = false;
+                    }else{
+                        flagPeso = true;
+                        if (peso < 50){
+                            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                            dialogoAviso.setTitle("AVISO");
+                            dialogoAviso.setHeaderText("Candidato a doador incapacitado de doar sangue,");
+                            dialogoAviso.setContentText("porque possui peso abaixo do permitido");
+                            dialogoAviso.showAndWait();
+                            BloodManagement.mudarTela("principal", 0);
+                        }
                     }
         
                     try{
                         altura = (Float.parseFloat(txtAltura.getText()));
+                        flagAltura = true;
                     }catch(NumberFormatException e){
                         Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
                         dialogoErro.setTitle("ERRO");
                         dialogoErro.setHeaderText("Altura inválido digitada!!");
                         dialogoErro.showAndWait();
+                        flagAltura = false;
                     }
         
-                    if (altura < 100){
-                        Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
-                        dialogoAviso.setTitle("AVISO");
-                        dialogoAviso.setHeaderText("Candidato a doador incapacitado de doar sangue,");
-                        dialogoAviso.setContentText("porque possui altura abaixo da permitida");
-                        dialogoAviso.showAndWait();
-                        BloodManagement.mudarTela("principal", 0);
+                    if(flagAltura && (altura <= 0)){
+                        Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
+                        dialogoErro.setTitle("ERRO");
+                        dialogoErro.setHeaderText("Altura inválido digitada!!");
+                        dialogoErro.showAndWait();
+                        flagAltura = false;
+                    }else{
+                        flagAltura = true;
+                        if (altura < 100){
+                            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                            dialogoAviso.setTitle("AVISO");
+                            dialogoAviso.setHeaderText("Candidato a doador incapacitado de doar sangue,");
+                            dialogoAviso.setContentText("porque possui altura abaixo da permitida");
+                            dialogoAviso.showAndWait();
+                            BloodManagement.mudarTela("principal", 0);
+                        }
                     }
         
                     try{
                         rg = (Long.parseLong(txtRG.getText()));
+                        flagRG = true;
                     }catch (NumberFormatException e){
                         Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
                         dialogoErro.setTitle("ERRO");
                         dialogoErro.setHeaderText("RG inválido digitado!!");
                         dialogoErro.showAndWait();
+                        flagRG = false;
                     }
         
                     try{
                         tel = (Long.parseLong(txtTel.getText()));
+                        flagTel = true;
                     }catch (NumberFormatException e){
                         Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
                         dialogoErro.setTitle("ERRO");
                         dialogoErro.setHeaderText("Telefone inválido digitado!!");
                         dialogoErro.showAndWait();
+                        flagTel = false;
                     }
          
                     try{
                         cpf = (Long.parseLong(txtCPF.getText()));
+                        flagCPF = true;
                     }catch(NumberFormatException e){
                         Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
                         dialogoErro.setTitle("ERRO");
                         dialogoErro.setHeaderText("CPF inválido digitado!!");
                         dialogoErro.showAndWait();
+                        flagCPF = false;
                     }
                     
                     //IF PARA GARANTIR QUE O CPF TEM 11 DÍGITOS, PODE PRECISAR 
                     //DE MODIFICAÇÃO
                     
-                    if(cpf/10000000000L == 0 || cpf/1000000000000L > 0){
+                    if(flagCPF && (cpf/10000000000L == 0 || cpf/1000000000000L > 0)){
                         Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
                         dialogoErro.setTitle("ERRO");
                         dialogoErro.setHeaderText("CPF inválido digitado!!");
                         dialogoErro.showAndWait();
+                        flagCPF = false;
+                    }else{
+                        flagCPF = true;
                     }
                     
-                    Pessoa pessoa = new Pessoa();
+                    if(flagPeso && flagAltura && flagTel && flagRG && flagCPF){
+                        
+                        Individuo ind = new Individuo();
+                        Sangue s = new Sangue();
                     
-                    pessoa.setDoadorMedula(chDoador.selectedProperty().getValue());
-                    pessoa.setAdicionais(txtbAdc.getText());
-                    pessoa.setOrgaoRG(txtOrgao.getText());
-                    pessoa.setNome(txtNome.getText());
-                    pessoa.setUf(spUF.getValue().getNome());
-                    pessoa.setTipoS(cbTipo.getValue().getNome());
-                    pessoa.setFator_rh(cbRH.getValue().getNome());
-                    pessoa.setExamesOK(chCheckup2.isSelected());
-                    pessoa.setFezExames(chCheckup.isSelected());
+                        //BANCO DE SANGUE
                     
-                    //USEI VARIÁVEIS POR CAUSA DOS TRY/CATCH, PRA GARANTIR QUE
-                    //A INSTÂNCIA PESSOA VAI TER O VALOR CORRETO
+                        s.setTipoSanguineo(cbTipo.getValue().getNome());
+                        s.setFatorRh(cbRH.getValue().getNome());
                     
-                    pessoa.setNascimento(nascimento);
-                    pessoa.setPeso(peso);
-                    pessoa.setAltura(altura);
-                    pessoa.setRg(rg);
-                    pessoa.setTel(tel);
-                    pessoa.setCpf(cpf);
+                        //LINKAGEM COM O BANCO
                     
+                        ind.setAltura(altura);
+                        ind.setNome(txtNome.getText());
+                        ind.setCpf(Long.toString(cpf));
+                        ind.setRg(Long.toString(rg));
+                        ind.setOrgaoExp(txtOrgao.getText());
+                        ind.setDataNascimento(nascimento.toString());
+                        ind.setDoadorMedula(chDoador.selectedProperty().getValue());
+                        ind.setUf(spUF.getValue().getNome());
+                        ind.setPeso(peso);
+                        ind.setCheckUp(chCheckup.isSelected()); 
+                        ind.setCheckUp2(chCheckup2.isSelected());
+                        ind.setTelefone(Long.toString(tel));
+                        ind.setObservacoes(txtbAdc.getText());
+                        ind.setSangue_id(s.getId());
                     
-                    //AQUI ADICIONA O DOADOR NO BANCO
+                        ind.save();
                     
-                    Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
-                    dialogoInfo.setTitle("SUCESSO");
-                    dialogoInfo.setHeaderText("Atualização foi realizada com sucesso!!");
-                    dialogoInfo.showAndWait();
+                        Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
+                        dialogoInfo.setTitle("SUCESSO");
+                        dialogoInfo.setHeaderText("Atualização foi realizada com sucesso!!");
+                        dialogoInfo.showAndWait();
                     
-                    BloodManagement.mudarTela("principal", 0);
+                        BloodManagement.mudarTela("principal", 0);
+                    }
+                    
                 }
             }
     }

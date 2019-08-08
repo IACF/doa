@@ -5,11 +5,9 @@
  */
 package bloodmanagement;
 
-import bloodmanagementmodels.Pessoa;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 /**
@@ -20,7 +18,6 @@ public class BloodManagement extends Application {
     
     private static Stage stage;
     private static Scene main, cadastro, retirar, CPF, atualizar;
-    Pessoa pessoa = new Pessoa();
     
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -72,44 +69,9 @@ public class BloodManagement extends Application {
             }
             break;
             default:
-                
-                //AQUI VEREIFICAMOS SE O CARA DO CPF PODE DOAR
-                
-                /*
-                if (!(pessoa.isFezExames())){
-                    Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
-                    dialogoErro.setTitle("ERRO");
-                    dialogoErro.setHeaderText("Necessário ao candidato a doador realizar" +
-                                              "exames de Check-Up!!");
-                    dialogoErro.showAndWait();
-                    BloodManagement.mudarTela("principal", 0);
-                }else if (!(pessoa.isExamesOK())){
-                    Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
-                    dialogoAviso.setTitle("AVISO");
-                    dialogoAviso.setHeaderText("Doador incapacitado de doar sangue,");
-                    dialogoAviso.setContentText("porque não passou nos exames de Check-Up");
-                    dialogoAviso.showAndWait();
-                    BloodManagement.mudarTela("principal", 0);
-                }else if(pessoa.getPeso() < 50){
-                    Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
-                    dialogoAviso.setTitle("AVISO");
-                    dialogoAviso.setHeaderText("Doador incapacitado de doar sangue,");
-                    dialogoAviso.setContentText("porque possui peso abaixo do permitido");
-                    dialogoAviso.showAndWait();
-                    BloodManagement.mudarTela("principal", 0);
-                }else if(pessoa.getAltura() < 100){
-                    Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
-                    dialogoAviso.setTitle("AVISO");
-                    dialogoAviso.setHeaderText("Doador incapacitado de doar sangue,");
-                    dialogoAviso.setContentText("porque possui altura abaixo da permitida");
-                    dialogoAviso.showAndWait();
-                    BloodManagement.mudarTela("principal", 0);
-                }else{
-                */
-                    FXMLAtualizarDoadorExistenteController.setarFlag();
-                    stage.setScene(CPF);
-            
-              //}
+                FXMLAtualizarDoadorExistenteController.setarFlag();
+                break;
+             
         }
     }
     

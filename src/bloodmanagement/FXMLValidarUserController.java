@@ -5,7 +5,7 @@
  */
 package bloodmanagement;
 
-import bloodmanagementmodels.Pessoa;
+import Individuo.Individuo;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -25,9 +25,10 @@ public class FXMLValidarUserController implements Initializable {
     @FXML
     private TextField txtCPF;
     
-    private long cpf_analisar;
+    private static long cpf_analisar;
     
-    Pessoa pessoa = new Pessoa();
+    Individuo ind = new Individuo();
+    private boolean flagCPF;
     
     @FXML
     private void voltarTelaInincial(ActionEvent event) throws Exception{
@@ -39,18 +40,18 @@ public class FXMLValidarUserController implements Initializable {
         
         try{
             cpf_analisar = (Long.parseLong(txtCPF.getText()));
-            BloodManagement.mudarTela("atualizar", 0);
+            flagCPF = true;
         }catch(NumberFormatException e){
             Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
             dialogoErro.setTitle("ERRO");
             dialogoErro.setHeaderText("CPF inválido digitado!!");
             dialogoErro.showAndWait();
+            flagCPF = false;
         }
         
-        //AQUI FAZER A VALIDAÇÃO DO CPF NO BANCO
-        
-        /*
-            if(cpf_analisar != CPF DO BANCO){
+        if(flagCPF){
+        //AQUI FAZ A VALIDAÇÃO DO CPF NO BANCO
+            if((ind.find(Long.toString(cpf_analisar)).getCpf()) == null){
                 Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
                 dialogoErro.setTitle("ERRO");
                 dialogoErro.setHeaderText("CPF digitado não foi encontrado!!");
@@ -58,8 +59,7 @@ public class FXMLValidarUserController implements Initializable {
             }else{
                 BloodManagement.mudarTela("atualizar", 0);
             }
-        */
- 
+        }
     }
     
     /**
@@ -67,9 +67,14 @@ public class FXMLValidarUserController implements Initializable {
      * @param url
      * @param rb
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    public static String getCpf_analisar() {
+        return Long.toString(cpf_analisar);
+    }
     
 }

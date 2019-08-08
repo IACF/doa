@@ -30,6 +30,7 @@ public class Doa2 {
         BolsaDeSangue b = new BolsaDeSangue(s.getId());
         System.out.println(b.quantidade(s.getId()));
 //        b.save();
+        b.retirada(s.getId(), 1);
 //        b.retirada(s.getId());
 //        i.setAltura(1.9);
 //        i.setCheckUp(false);

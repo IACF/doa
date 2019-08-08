@@ -27,11 +27,12 @@ public class Individuo implements IDAO<Object>{
     private Boolean doadorMedula;
     private Double altura;
     private Double peso;
-    private Boolean checkUp;
+    private Boolean checkUp, checkUp2;
     private String telefone;
     private String observacoes;
     private int sangue_id;
-    DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    
+    private final DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public int getSangue_id() {
         return sangue_id;
@@ -182,5 +183,17 @@ public class Individuo implements IDAO<Object>{
     public String formatDate(String date) {
         String[] d = date.split("-");
         return d[2]+"/"+d[1]+"/"+d[0];
+    }
+
+    public Boolean getCheckUp2() {
+        return checkUp2;
+    }
+
+    public void setCheckUp2(Boolean checkUp2) {
+        this.checkUp2 = checkUp2;
+    }
+
+    public DateTimeFormatter getFormatador() {
+        return formatador;
     }
 }
