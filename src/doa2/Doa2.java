@@ -21,7 +21,7 @@ public class Doa2 {
     public static void main(String[] args) {
         // TODO code application logic here
         Sangue s = new Sangue();
-        s.setTipoSanguineo("AB");
+        s.setTipoSanguineo("A");
         s.setFatorRh("-");
         System.out.println("executou");
         Individuo i = new Individuo();
