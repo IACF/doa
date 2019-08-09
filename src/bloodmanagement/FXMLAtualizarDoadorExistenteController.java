@@ -56,6 +56,9 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
     
     private boolean flagAltura=false, flagPeso=false;
     
+    Individuo ind = new Individuo();
+    Individuo atual = ind.find(FXMLValidarUserController.getCpf_analisar());
+    
     @FXML
     private void voltarTelaInincial(ActionEvent event) throws Exception{
         BloodManagement.mudarTela("principal", 0);
@@ -67,18 +70,13 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
     
     @FXML
     private void atualizarDados(){
-        // aqui vcs conectam as variáveis com o banco
-        // aqui vcs setam as variáveis logo da pessoa
         
         System.out.println(FXMLValidarUserController.getCpf_analisar());
-        
-        Individuo ind = new Individuo();
-        Individuo atual = ind.find(FXMLValidarUserController.getCpf_analisar());
-               
+                       
         atual.setCheckUp(cbCheckup.selectedProperty().getValue());
         atual.setCheckUp2(cbCheckup2.selectedProperty().getValue());
         atual.setDoadorMedula(cbDoador.selectedProperty().getValue());
-        atual.setObservacoes(atual.getObservacoes()+" "+ txtbAdc.getText()); // Verificar
+        atual.setObservacoes(atual.getObservacoes()+". "+ txtbAdc.getText()); // Verificar
         
             if(txtPeso.getText() == null ||
                txtAltura.getText() == null){
@@ -198,9 +196,7 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        lblNomeDoador.setText("Jão da Silva");
-        //lblNomeDoador.setText(pessoa.getNome());
+        lblNomeDoador.setText(atual.getNome());
     }    
     
 }

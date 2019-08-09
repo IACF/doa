@@ -53,9 +53,18 @@ public class FXMLRetirarBolsasController implements Initializable {
     private final List<FatorRH> rh = new ArrayList<>();
     private ObservableList<FatorRH> obsRh;
     
-    Sangue sAMais, sBMais, sABMais, sOMais,
-            sAMenos, sBMenos, sABMenos, sOMenos,
-            sANull, sBNull, sABNull, sONull;
+    Sangue sAMais = new Sangue();
+    Sangue sBMais = new Sangue();
+    Sangue sABMais = new Sangue(); 
+    Sangue sOMais = new Sangue();
+    Sangue sAMenos = new Sangue();
+    Sangue sBMenos = new Sangue(); 
+    Sangue sABMenos = new Sangue();
+    Sangue sOMenos = new Sangue();
+    Sangue sANull = new Sangue();
+    Sangue sBNull = new Sangue();
+    Sangue sABNull = new Sangue(); 
+    Sangue sONull = new Sangue();
     
     BolsaDeSangue AMais, BMais, ABMais, OMais,
                   AMenos, BMenos, ABMenos, OMenos,
@@ -294,6 +303,7 @@ public class FXMLRetirarBolsasController implements Initializable {
     }
     
     public void carregarBolsas(){
+        
         sAMais.setTipoSanguineo("A");
         sAMais.setFatorRh("+");
         AMais = new BolsaDeSangue(sAMais.getId());
