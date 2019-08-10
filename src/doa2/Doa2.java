@@ -24,9 +24,9 @@ public class Doa2 {
         s.setTipoSanguineo("A");
         s.setFatorRh("-");
 //        System.out.println("executou");
-//        Individuo i = new Individuo();
-//        i = i.find("85918095573");
-//        System.out.println(i.getCpf());
+        Individuo i = new Individuo();
+        i = i.find("12345678910");
+        System.out.println(i.getNome());
         BolsaDeSangue b = new BolsaDeSangue(s.getId());
         System.out.println(b.quantidade(s.getId()));
 //        b.save();

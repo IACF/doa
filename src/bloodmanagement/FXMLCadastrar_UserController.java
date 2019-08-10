@@ -311,7 +311,7 @@ public class FXMLCadastrar_UserController implements Initializable {
                     
                         Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
                         dialogoInfo.setTitle("SUCESSO");
-                        dialogoInfo.setHeaderText("Atualização foi realizada com sucesso!!");
+                        dialogoInfo.setHeaderText("Cadastro foi realizado com sucesso!!");
                         dialogoInfo.showAndWait();
                     
                         BloodManagement.mudarTela("principal", 0);

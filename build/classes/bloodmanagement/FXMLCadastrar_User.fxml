@@ -12,7 +12,7 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="484.0" prefWidth="676.0" stylesheets="@../css/cadastro.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bloodmanagement.FXMLCadastrar_UserController">
    <children>
-      <Label layoutX="183.0" layoutY="23.0" prefHeight="35.0" prefWidth="300.0" text="Cadastro de Novo Doador" textFill="#3600f0">
+      <Label layoutX="183.0" layoutY="23.0" prefHeight="35.0" prefWidth="300.0" text="Cadastro de Novo Doador" textAlignment="CENTER" textFill="#3600f0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -25,53 +25,53 @@
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <Label layoutX="41.0" layoutY="70.0" text="Nome Completo:">
+      <Label layoutX="41.0" layoutY="70.0" text="Nome Completo:" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="39.0" layoutY="115.0" text="CPF: ">
+      <Label layoutX="39.0" layoutY="115.0" text="CPF: " textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="231.0" layoutY="115.0" text="RG:">
+      <Label layoutX="231.0" layoutY="115.0" text="RG:" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="38.0" layoutY="197.0" text="Tipo Sanguíneo:">
+      <Label layoutX="38.0" layoutY="197.0" text="Tipo Sanguíneo:" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
       <Label layoutX="38.0" layoutY="200.0" />
-      <Label layoutX="216.0" layoutY="196.0" text="Fator RH:">
+      <Label layoutX="216.0" layoutY="196.0" text="Fator RH:" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="502.0" layoutY="196.0" text="Peso (kg):">
+      <Label layoutX="502.0" layoutY="196.0" text="Peso (kg):" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="348.0" layoutY="196.0" text="Altura (cm):">
+      <Label layoutX="348.0" layoutY="196.0" text="Altura (cm):" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="142.0" layoutY="158.0" text="Data de Nascimento:">
+      <Label layoutX="142.0" layoutY="158.0" text="Data de Nascimento:" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="38.0" layoutY="230.0" text="Exames de Check-Up:">
+      <Label layoutX="38.0" layoutY="230.0" text="Exames de Check-Up:" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="468.0" layoutY="158.0" text="Doador de Medula:">
+      <Label layoutX="468.0" layoutY="158.0" text="Doador de Medula:" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
@@ -80,17 +80,17 @@
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <Label layoutX="420.0" layoutY="115.0" text="Órgao Expedidor:">
+      <Label layoutX="420.0" layoutY="115.0" text="Órgao Expedidor:" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="231.0" layoutY="230.0" text="Telefone para Contato (Cel ou Fixo):">
+      <Label layoutX="231.0" layoutY="230.0" text="Telefone para Contato (Cel ou Fixo):" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="41.0" layoutY="159.0" text="UF:">
+      <Label layoutX="41.0" layoutY="159.0" text="UF:" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font></Label>
@@ -136,7 +136,7 @@
          </font>
       </Button>
       <ChoiceBox fx:id="spUF" layoutX="72.0" layoutY="158.0" prefHeight="25.0" prefWidth="57.0" />
-      <Label layoutX="235.0" layoutY="260.0" text="Passou no Check-Up:">
+      <Label layoutX="235.0" layoutY="260.0" text="Passou no Check-Up:" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>

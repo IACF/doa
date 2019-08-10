@@ -9,27 +9,27 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="484.0" prefWidth="676.0" stylesheets="@../css/retrieve.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bloodmanagement.FXMLRetirarBolsasController">
    <children>
-      <Label layoutX="235.0" layoutY="28.0" text="Retirada de Bolsas" textFill="#f85e05">
+      <Label layoutX="235.0" layoutY="28.0" text="Retirada de Bolsas" textAlignment="CENTER" textFill="#f85e05">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="173.0" layoutY="103.0" text="Tipo A">
+      <Label layoutX="173.0" layoutY="103.0" text="Tipo A" textAlignment="CENTER">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="296.0" layoutY="103.0" text="Tipo B">
+      <Label layoutX="296.0" layoutY="103.0" text="Tipo B" textAlignment="CENTER">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="425.0" layoutY="103.0" text="Tipo AB">
+      <Label layoutX="425.0" layoutY="103.0" text="Tipo AB" textAlignment="CENTER">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="563.0" layoutY="103.0" text="Tipo O">
+      <Label layoutX="563.0" layoutY="103.0" text="Tipo O" textAlignment="CENTER">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
@@ -44,84 +44,84 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblOMenos" alignment="CENTER" layoutX="571.0" layoutY="142.0" text="Label">
+      <Label fx:id="lblOMenos" alignment="CENTER" layoutX="571.0" layoutY="142.0" text="Label" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblOMais" alignment="CENTER" layoutX="571.0" layoutY="176.0" text="Label">
+      <Label fx:id="lblOMais" alignment="CENTER" layoutX="571.0" layoutY="176.0" text="Label" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblONull" alignment="CENTER" layoutX="571.0" layoutY="210.0" text="Label">
+      <Label fx:id="lblONull" alignment="CENTER" layoutX="571.0" layoutY="210.0" text="Label" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblAMenos" alignment="CENTER" layoutX="180.0" layoutY="142.0" text="Label">
+      <Label fx:id="lblAMenos" alignment="CENTER" layoutX="180.0" layoutY="142.0" text="Label" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblBMenos" alignment="CENTER" layoutX="308.0" layoutY="142.0" text="Label">
+      <Label fx:id="lblBMenos" alignment="CENTER" layoutX="308.0" layoutY="142.0" text="Label" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblABMenos" alignment="CENTER" layoutX="442.0" layoutY="142.0" text="Label">
+      <Label fx:id="lblABMenos" alignment="CENTER" layoutX="442.0" layoutY="142.0" text="Label" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblABNull" alignment="CENTER" layoutX="442.0" layoutY="210.0" text="Label">
+      <Label fx:id="lblABNull" alignment="CENTER" layoutX="442.0" layoutY="210.0" text="Label" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblBMais" alignment="CENTER" layoutX="308.0" layoutY="175.0" text="Label">
+      <Label fx:id="lblBMais" alignment="CENTER" layoutX="308.0" layoutY="175.0" text="Label" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblAMais" alignment="CENTER" layoutX="180.0" layoutY="176.0" text="Label">
+      <Label fx:id="lblAMais" alignment="CENTER" layoutX="180.0" layoutY="176.0" text="Label" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblANull" alignment="CENTER" layoutX="180.0" layoutY="210.0" text="Label">
+      <Label fx:id="lblANull" alignment="CENTER" layoutX="180.0" layoutY="210.0" text="Label" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblBNull" alignment="CENTER" layoutX="308.0" layoutY="210.0" text="Label">
+      <Label fx:id="lblBNull" alignment="CENTER" layoutX="308.0" layoutY="210.0" text="Label" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblABMais" alignment="CENTER" layoutX="442.0" layoutY="175.0" text="Label">
+      <Label fx:id="lblABMais" alignment="CENTER" layoutX="442.0" layoutY="175.0" text="Label" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
       <ChoiceBox fx:id="cbTipo" layoutX="306.0" layoutY="305.0" prefHeight="25.0" prefWidth="65.0" />
       <ChoiceBox fx:id="cbRH" layoutX="306.0" layoutY="356.0" prefHeight="25.0" prefWidth="65.0" />
-      <Label layoutX="79.0" layoutY="142.0" text="-" textFill="RED">
+      <Label layoutX="79.0" layoutY="142.0" text="-" textAlignment="CENTER" textFill="RED">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="70.0" layoutY="103.0" text="RH">
+      <Label layoutX="70.0" layoutY="103.0" text="RH" textAlignment="CENTER">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="77.0" layoutY="176.0" text="+" textFill="GREEN">
+      <Label layoutX="77.0" layoutY="176.0" text="+" textAlignment="CENTER" textFill="GREEN">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="65.0" layoutY="215.0" text="Nulo" textFill="BLUE">
+      <Label layoutX="65.0" layoutY="215.0" text="Nulo" textAlignment="CENTER" textFill="BLUE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

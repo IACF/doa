@@ -68,8 +68,9 @@ public class BloodManagement extends Application {
                     break;   
             }
             break;
-            default:
+            case 1:
                 FXMLAtualizarDoadorExistenteController.setarFlag();
+                stage.setScene(CPF);
                 break;
              
         }
