@@ -53,9 +53,10 @@ public class FXMLRetirarBolsasController implements Initializable {
     private final List<FatorRH> rh = new ArrayList<>();
     private ObservableList<FatorRH> obsRh;
     
-    Sangue sAMais, sBMais, sABMais, sOMais,
-            sAMenos, sBMenos, sABMenos, sOMenos,
-            sANull, sBNull, sABNull, sONull;
+    Sangue sAMais = new Sangue(), sBMais = new Sangue(), sABMais = new Sangue(), sOMais = new Sangue(),
+            sAMenos = new Sangue(), sBMenos = new Sangue(), sABMenos = new Sangue(), sOMenos = new Sangue(),
+            sANull = new Sangue(), sBNull = new Sangue(), sABNull = new Sangue(), sONull = new Sangue();
+
     
     BolsaDeSangue AMais, BMais, ABMais, OMais,
                   AMenos, BMenos, ABMenos, OMenos,
@@ -86,7 +87,7 @@ public class FXMLRetirarBolsasController implements Initializable {
                 dialogoErro.showAndWait();
                 flagQtd = false;
             }
-        
+            
             if(flagQtd &&(quantidadePedida <= 0)){
                 Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
                 dialogoErro.setTitle("ERRO");
@@ -274,72 +275,80 @@ public class FXMLRetirarBolsasController implements Initializable {
     
     public void carregarQuantidades(){
         // Aqui entra a conexão com o banco, linkando com as variáveis lbl
-        
+        System.out.println(sOMenos.getId());
         lblAMais.setText(Integer.toString(AMais.quantidade(sAMais.getId())));
         lblBMais.setText(Integer.toString(BMais.quantidade(sBMais.getId())));
         lblABMais.setText(Integer.toString(ABMais.quantidade(sABMais.getId())));
         lblOMais.setText(Integer.toString(OMais.quantidade(sOMais.getId())));
         
         
+
         lblAMenos.setText(Integer.toString(AMenos.quantidade(sAMenos.getId())));
         lblBMenos.setText(Integer.toString(BMenos.quantidade(sBMenos.getId())));
         lblABMenos.setText(Integer.toString(ABMenos.quantidade(sABMenos.getId())));
-        lblOMenos.setText(Integer.toString(OMenos.quantidade(sOMenos.getId())));
-        
-        lblANull.setText(Integer.toString(ANull.quantidade(sANull.getId())));
-        lblBNull.setText(Integer.toString(BNull.quantidade(sBNull.getId())));
-        lblABNull.setText(Integer.toString(ABNull.quantidade(sABNull.getId())));
-        lblONull.setText(Integer.toString(ONull.quantidade(sONull.getId())));
-        
+        lblOMenos.setText(Integer.toString(OMenos.quantidade(sOMenos.getId())));       
     }
     
     public void carregarBolsas(){
+        sAMais = new Sangue();
         sAMais.setTipoSanguineo("A");
         sAMais.setFatorRh("+");
         AMais = new BolsaDeSangue(sAMais.getId());
         
+        
+
         sBMais.setTipoSanguineo("B");
         sBMais.setFatorRh("+");
         BMais = new BolsaDeSangue(sBMais.getId());
         
+        
+
         sABMais.setTipoSanguineo("AB");
         sABMais.setFatorRh("+");
         ABMais = new BolsaDeSangue(sBMais.getId());
         
+        
+
         sOMais.setTipoSanguineo("O");
         sOMais.setFatorRh("+");
         OMais = new BolsaDeSangue(sOMais.getId());
         
+       
+
         sAMenos.setTipoSanguineo("A");
         sAMenos.setFatorRh("-");
         AMenos = new BolsaDeSangue(sAMenos.getId());
+        
+        
         
         sBMenos.setTipoSanguineo("B");
         sBMenos.setFatorRh("-");
         BMenos = new BolsaDeSangue(sBMenos.getId());
         
+       
         sABMenos.setTipoSanguineo("AB");
         sABMenos.setFatorRh("-");
         ABMenos = new BolsaDeSangue(sABMenos.getId());
         
+       
         sOMenos.setTipoSanguineo("O");
         sOMenos.setFatorRh("-");
         OMenos = new BolsaDeSangue(sOMenos.getId());
         
-        sANull.setTipoSanguineo("A");
-        sANull.setFatorRh("Null");
-        ANull = new BolsaDeSangue(sANull.getId());
-        
-        sBNull.setTipoSanguineo("B");
-        sBNull.setFatorRh("Null");
-        BNull = new BolsaDeSangue(sBNull.getId());
-        
-        sABNull.setTipoSanguineo("AB");
-        sABNull.setFatorRh("Null");
-        ABNull = new BolsaDeSangue(sABNull.getId());
-        
-        sONull.setTipoSanguineo("O");
-        sONull.setFatorRh("Null");
-        ONull = new BolsaDeSangue(sONull.getId());
+//        sANull.setTipoSanguineo("A");
+//        sANull.setFatorRh("Null");
+//        ANull = new BolsaDeSangue(sANull.getId());
+//        
+//        sBNull.setTipoSanguineo("B");
+//        sBNull.setFatorRh("Null");
+//        BNull = new BolsaDeSangue(sBNull.getId());
+//        
+//        sABNull.setTipoSanguineo("AB");
+//        sABNull.setFatorRh("Null");
+//        ABNull = new BolsaDeSangue(sABNull.getId());
+//        
+//        sONull.setTipoSanguineo("O");
+//        sONull.setFatorRh("Null");
+//        ONull = new BolsaDeSangue(sONull.getId());
     }
 }

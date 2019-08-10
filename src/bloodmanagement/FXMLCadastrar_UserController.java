@@ -305,6 +305,8 @@ public class FXMLCadastrar_UserController implements Initializable {
                         ind.setObservacoes(txtbAdc.getText());
                         ind.setSangue_id(s.getId());
                     
+                        System.out.println(ind.getAltura());
+                        
                         ind.save();
                     
                         Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
