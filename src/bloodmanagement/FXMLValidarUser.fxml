@@ -8,9 +8,9 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="484.0" prefWidth="676.0" stylesheets="@../css/validate.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bloodmanagement.FXMLValidarUserController">
    <children>
-      <Label layoutX="159.0" layoutY="144.0" text="Digite o CPF do doador:" textAlignment="CENTER">
+      <Label layoutX="148.0" layoutY="148.0" text="Digite o CPF do doador:" textAlignment="CENTER">
          <font>
-            <Font name="System Bold" size="32.0" />
+            <Font name="Lucida Bright Demibold" size="32.0" />
          </font>
       </Label>
       <TextField fx:id="txtCPF" layoutX="203.0" layoutY="205.0" promptText="Ex.: 12345678910">
@@ -18,14 +18,14 @@
             <Font size="22.0" />
          </font>
       </TextField>
-      <Button fx:id="btnConfirmar" layoutX="306.0" layoutY="264.0" mnemonicParsing="false" onAction="#verificarCPF" text="OK">
+      <Button fx:id="btnConfirmar" layoutX="305.0" layoutY="265.0" mnemonicParsing="false" onAction="#verificarCPF" text="OK">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="Lucida Bright Demibold" size="24.0" />
          </font>
       </Button>
-      <Button layoutX="251.0" layoutY="329.0" mnemonicParsing="false" onAction="#voltarTelaInincial" text="Voltar à Tela Inicial">
+      <Button layoutX="230.0" layoutY="327.0" mnemonicParsing="false" onAction="#voltarTelaInincial" text="Voltar à Tela Inicial">
          <font>
-            <Font size="18.0" />
+            <Font name="Lucida Bright Regular" size="20.0" />
          </font>
       </Button>
    </children>

@@ -253,6 +253,16 @@ public class FXMLCadastrar_UserController implements Initializable {
                         dialogoErro.showAndWait();
                         flagTel = false;
                     }
+                    
+                    if(flagTel && (tel/10000000000L == 0 || tel/1000000000000L > 0)){
+                        Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
+                        dialogoErro.setTitle("ERRO");
+                        dialogoErro.setHeaderText("Telefone inválido digitado!!");
+                        dialogoErro.showAndWait();
+                        flagTel = false;
+                    }else{
+                        flagTel = true;
+                    }
          
                     try{
                         cpf = (Long.parseLong(txtCPF.getText()));
@@ -321,7 +331,21 @@ public class FXMLCadastrar_UserController implements Initializable {
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        txtNome = null;
+        txtCPF = null;
+        txtRG = null;
+        txtOrgao = null;
+        spUF = null;
+        dpNasc = null;
+        txtAltura = null;
+        chDoador = null;
+        txtPeso = null;
+        cbTipo = null;
+        cbRH = null;
+        chCheckup = null;
+        txtTel = null;
+        txtbAdc = null;
+        chCheckup2 = null;
         carregarTiposSangue();
         carregarFatoresRH();
         carregarUF();
@@ -348,11 +372,9 @@ public class FXMLCadastrar_UserController implements Initializable {
         
         FatorRH mais = new FatorRH(1,"+");
         FatorRH menos = new FatorRH(2,"-");
-        FatorRH nulo = new FatorRH(3,"Null");
         
         rh.add(mais);
         rh.add(menos);
-        rh.add(nulo);
         
         obsRh = FXCollections.observableArrayList(rh);
         

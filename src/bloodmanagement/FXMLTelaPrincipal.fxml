@@ -18,25 +18,25 @@
             <Image url="@../images/tela_inicial.png" />
          </image>
       </ImageView>
-        <Button fx:id="btnCadastrar" layoutX="103.0" layoutY="250.0" onAction="#abrirTelaCadastro" prefHeight="39.0" prefWidth="169.0" text="Cadastrar Usuário">
+        <Button fx:id="btnCadastrar" layoutX="98.0" layoutY="254.0" onAction="#abrirTelaCadastro" prefHeight="39.0" prefWidth="197.0" text="Cadastrar Usuário">
          <font>
-            <Font size="18.0" />
+            <Font name="Lucida Bright Regular" size="18.0" />
          </font></Button>
-      <Button fx:id="btnAdd" layoutX="103.0" layoutY="362.0" mnemonicParsing="false" onAction="#abrirTelaAdd" prefHeight="39.0" prefWidth="169.0" text="Adicionar Doação">
+      <Button fx:id="btnAdd" layoutX="103.0" layoutY="362.0" mnemonicParsing="false" onAction="#abrirTelaAdd" prefHeight="39.0" prefWidth="186.0" text="Adicionar Doação">
          <font>
-            <Font size="18.0" />
+            <Font name="Lucida Bright Regular" size="18.0" />
          </font></Button>
-      <Button fx:id="btnRetirar" layoutX="103.0" layoutY="305.0" mnemonicParsing="false" onAction="#abrirTelaRetirada" prefHeight="39.0" prefWidth="169.0" text="Retirar Bolsas">
+      <Button fx:id="btnRetirar" layoutX="112.0" layoutY="308.0" mnemonicParsing="false" onAction="#abrirTelaRetirada" prefHeight="39.0" prefWidth="169.0" text="Retirar Bolsas">
          <font>
-            <Font size="18.0" />
+            <Font name="Lucida Bright Regular" size="18.0" />
          </font></Button>
-      <Button fx:id="btnUpdate" layoutX="60.0" layoutY="414.0" mnemonicParsing="false" onAction="#abrirTelaUpdate" prefHeight="39.0" prefWidth="256.0" text="Atualizar Cadastro Existente">
+      <Button fx:id="btnUpdate" layoutX="60.0" layoutY="414.0" mnemonicParsing="false" onAction="#abrirTelaUpdate" prefHeight="39.0" prefWidth="282.0" text="Atualizar Cadastro Existente">
          <font>
-            <Font size="18.0" />
+            <Font name="Lucida Bright Regular" size="18.0" />
          </font></Button>
       <Button fx:id="btnSair" layoutX="486.0" layoutY="364.0" mnemonicParsing="false" onAction="#sairPrograma" prefHeight="39.0" prefWidth="69.0" text="Sair">
          <font>
-            <Font size="18.0" />
+            <Font name="Lucida Bright Regular" size="18.0" />
          </font></Button>
     </children>
 </AnchorPane>

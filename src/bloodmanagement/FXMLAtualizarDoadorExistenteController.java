@@ -197,6 +197,12 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         lblNomeDoador.setText(atual.getNome());
+        txtbAdc = null;
+        txtPeso = null;
+        txtAltura = null;
+        cbDoador = null;
+        cbCheckup = null;
+        cbCheckup2 = null;
     }    
     
 }

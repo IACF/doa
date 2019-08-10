@@ -3,15 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/UNIVASF/Desktop/PROJETO/doa/src/Individuo/IndividuoDAO.java</file>
-            <file>file:/C:/Users/UNIVASF/Desktop/PROJETO/doa/src/Sangue/SangueDAO.java</file>
-            <file>file:/C:/Users/UNIVASF/Desktop/PROJETO/doa/src/Individuo/Individuo.java</file>
-            <file>file:/C:/Users/UNIVASF/Desktop/PROJETO/doa/src/doa2/Doa2.java</file>
-            <file>file:/C:/Users/UNIVASF/Desktop/PROJETO/doa/src/Sangue/Sangue.java</file>
-            <file>file:/C:/Users/UNIVASF/Desktop/PROJETO/doa/src/BolsaDeSangue/BolsaDeSangue.java</file>
-            <file>file:/C:/Users/UNIVASF/Desktop/PROJETO/doa/src/bloodmanagement/FXMLRetirarBolsasController.java</file>
-            <file>file:/C:/Users/UNIVASF/Desktop/PROJETO/doa/src/BolsaDeSangue/BolsaDeSangueDAO.java</file>
-            <file>file:/C:/Users/UNIVASF/Desktop/PROJETO/doa/src/bloodmanagement/BloodManagement.java</file>
+            <file>file:/C:/Users/Igor/Desktop/doa/src/bloodmanagement/FXMLRetirarBolsasController.java</file>
+            <file>file:/C:/Users/Igor/Desktop/doa/src/bloodmanagement/FXMLValidarUserController.java</file>
         </group>
     </open-files>
 </project-private>

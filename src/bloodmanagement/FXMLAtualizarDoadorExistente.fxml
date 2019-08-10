@@ -12,37 +12,37 @@
    <children>
       <Label layoutX="151.0" layoutY="31.0" text="Atualizar dados do doador " textFill="#3600f0">
          <font>
-            <Font name="System Bold" size="28.0" />
+            <Font name="Lucida Bright Demibold" size="28.0" />
          </font>
       </Label>
-      <Label layoutX="151.0" layoutY="125.0" text="Peso:">
+      <Label layoutX="115.0" layoutY="125.0" text="Peso (kg):">
          <font>
-            <Font size="22.0" />
+            <Font name="Lucida Sans Unicode" size="22.0" />
          </font>
       </Label>
-      <Label layoutX="330.0" layoutY="125.0" text="Altura:">
+      <Label layoutX="330.0" layoutY="125.0" text="Altura (cm):">
          <font>
-            <Font size="22.0" />
+            <Font name="Lucida Sans Unicode" size="22.0" />
          </font>
       </Label>
-      <Label layoutX="225.0" layoutY="168.0" text="Exames de Check-Up:">
+      <Label layoutX="197.0" layoutY="166.0" text="Exames de Check-Up:">
          <font>
-            <Font size="22.0" />
+            <Font name="Lucida Sans Unicode" size="22.0" />
          </font>
       </Label>
-      <Label layoutX="236.0" layoutY="207.0" text="Doador de Medula:">
+      <Label layoutX="229.0" layoutY="205.0" text="Doador de Medula:">
          <font>
-            <Font size="22.0" />
+            <Font name="Lucida Sans Unicode" size="22.0" />
          </font>
       </Label>
-      <TextArea fx:id="txtbAdc" layoutX="34.0" layoutY="306.0" prefHeight="119.0" prefWidth="386.0" promptText="Observações Adicionais" />
-      <Button layoutX="441.0" layoutY="322.0" mnemonicParsing="false" onAction="#atualizarDados" text="Realizar atualizações">
+      <TextArea fx:id="txtbAdc" layoutX="26.0" layoutY="307.0" prefHeight="119.0" prefWidth="386.0" promptText="Observações Adicionais" />
+      <Button layoutX="429.0" layoutY="327.0" mnemonicParsing="false" onAction="#atualizarDados" text="Realizar atualizações">
          <font>
-            <Font size="20.0" />
+            <Font name="Lucida Bright Regular" size="20.0" />
          </font>
       </Button>
-      <TextField fx:id="txtPeso" layoutX="219.0" layoutY="129.0" prefHeight="25.0" prefWidth="86.0" />
-      <TextField fx:id="txtAltura" layoutX="408.0" layoutY="130.0" prefHeight="25.0" prefWidth="86.0" />
+      <TextField fx:id="txtPeso" layoutX="219.0" layoutY="129.0" prefHeight="25.0" prefWidth="86.0" promptText="50" />
+      <TextField fx:id="txtAltura" layoutX="461.0" layoutY="131.0" prefHeight="25.0" prefWidth="86.0" promptText="170" />
       <CheckBox fx:id="cbDoador" layoutX="442.0" layoutY="174.0" mnemonicParsing="false">
          <font>
             <Font size="14.0" />
@@ -55,17 +55,17 @@
       </CheckBox>
       <Label fx:id="lblNomeDoador" alignment="CENTER" contentDisplay="CENTER" layoutX="35.0" layoutY="71.0" prefHeight="30.0" prefWidth="615.0" text="Nome do Doador" textAlignment="CENTER" textFill="#4f4f4f">
          <font>
-            <Font name="System Bold Italic" size="24.0" />
+            <Font name="Lucida Bright Demibold Italic" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="477.0" layoutY="384.0" mnemonicParsing="false" onAction="#voltarTelaInincial" text="Voltar à Tela Inicial">
+      <Button layoutX="460.0" layoutY="382.0" mnemonicParsing="false" onAction="#voltarTelaInincial" text="Voltar à Tela Inicial">
          <font>
-            <Font size="14.0" />
+            <Font name="Lucida Bright Regular" size="14.0" />
          </font>
       </Button>
-      <Label layoutX="227.0" layoutY="246.0" text="Passou no Check-Up:">
+      <Label layoutX="200.0" layoutY="244.0" text="Passou no Check-Up:">
          <font>
-            <Font size="22.0" />
+            <Font name="Lucida Sans Unicode" size="22.0" />
          </font>
       </Label>
       <CheckBox fx:id="cbCheckup2" layoutX="442.0" layoutY="252.0" mnemonicParsing="false">

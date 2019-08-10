@@ -31,10 +31,8 @@ import javafx.scene.control.TextField;
 public class FXMLRetirarBolsasController implements Initializable {
 
     @FXML
-    private Label lblAMenos, lblAMais, lblANull,
-                  lblBMenos, lblBMais, lblBNull,
-                  lblABMenos, lblABMais, lblABNull,
-                  lblOMenos, lblOMais, lblONull;
+    private Label lblAMenos, lblAMais, lblBMenos, lblBMais,
+                  lblABMenos, lblABMais, lblOMenos, lblOMais;
     
     @FXML
     private TextField txtQTD;
@@ -61,14 +59,9 @@ public class FXMLRetirarBolsasController implements Initializable {
     Sangue sBMenos = new Sangue(); 
     Sangue sABMenos = new Sangue();
     Sangue sOMenos = new Sangue();
-    Sangue sANull = new Sangue();
-    Sangue sBNull = new Sangue();
-    Sangue sABNull = new Sangue(); 
-    Sangue sONull = new Sangue();
     
     BolsaDeSangue AMais, BMais, ABMais, OMais,
-                  AMenos, BMenos, ABMenos, OMenos,
-                  ANull, BNull, ABNull, ONull;
+                  AMenos, BMenos, ABMenos, OMenos;
     
     private boolean flagQtd, flagSangue;
     
@@ -150,22 +143,7 @@ public class FXMLRetirarBolsasController implements Initializable {
                                 break;
                         }
                         break;
-                    default:
-                        switch(cbTipo.getValue().getNome()){
-                            case "A":
-                                quantidadeBanco = Integer.parseInt(lblANull.getText());
-                                break;
-                            case "B":
-                                quantidadeBanco = Integer.parseInt(lblBNull.getText());
-                                break;
-                            case "AB":
-                                quantidadeBanco = Integer.parseInt(lblABNull.getText());
-                                break;
-                            case "O":
-                                quantidadeBanco = Integer.parseInt(lblONull.getText());
-                                break;
-                        }
-                        break;
+                    
                 }
         
                 if(quantidadeBanco < quantidadePedida){
@@ -211,23 +189,7 @@ public class FXMLRetirarBolsasController implements Initializable {
                                 break;
                         }
                         break;
-                    default:
-                        switch(cbTipo.getValue().getNome()){
-                            case "A":
-                                ANull.retirada(sANull.getId(),quantidadePedida);
-                                break;
-                            case "B":
-                                ANull.retirada(sANull.getId(),quantidadePedida);
-                                break;
-                            case "AB":
-                                ANull.retirada(sANull.getId(),quantidadePedida);
-                                break;
-                            case "O":
-                                ANull.retirada(sANull.getId(),quantidadePedida);
-                                break;
-                        }
-                        break;
-                }
+                    }
                     
                     Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
                     dialogoInfo.setTitle("SUCESSO");
@@ -241,7 +203,9 @@ public class FXMLRetirarBolsasController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        txtQTD = null;
+        cbTipo = null;
+        cbRH = null;
         carregarBolsas();
         carregarTiposSangue();
         carregarFatoresRH();
@@ -269,11 +233,9 @@ public class FXMLRetirarBolsasController implements Initializable {
         
         FatorRH mais = new FatorRH(1,"+");
         FatorRH menos = new FatorRH(2,"-");
-        FatorRH nulo = new FatorRH(3,"Null");
         
         rh.add(mais);
         rh.add(menos);
-        rh.add(nulo);
         
         obsRh = FXCollections.observableArrayList(rh);
         
@@ -294,11 +256,6 @@ public class FXMLRetirarBolsasController implements Initializable {
         lblBMenos.setText(Integer.toString(BMenos.quantidade(sBMenos.getId())));
         lblABMenos.setText(Integer.toString(ABMenos.quantidade(sABMenos.getId())));
         lblOMenos.setText(Integer.toString(OMenos.quantidade(sOMenos.getId())));
-        
-        lblANull.setText(Integer.toString(ANull.quantidade(sANull.getId())));
-        lblBNull.setText(Integer.toString(BNull.quantidade(sBNull.getId())));
-        lblABNull.setText(Integer.toString(ABNull.quantidade(sABNull.getId())));
-        lblONull.setText(Integer.toString(ONull.quantidade(sONull.getId())));
         
     }
     
@@ -335,21 +292,5 @@ public class FXMLRetirarBolsasController implements Initializable {
         sOMenos.setTipoSanguineo("O");
         sOMenos.setFatorRh("-");
         OMenos = new BolsaDeSangue(sOMenos.getId());
-        
-        sANull.setTipoSanguineo("A");
-        sANull.setFatorRh("Null");
-        ANull = new BolsaDeSangue(sANull.getId());
-        
-        sBNull.setTipoSanguineo("B");
-        sBNull.setFatorRh("Null");
-        BNull = new BolsaDeSangue(sBNull.getId());
-        
-        sABNull.setTipoSanguineo("AB");
-        sABNull.setFatorRh("Null");
-        ABNull = new BolsaDeSangue(sABNull.getId());
-        
-        sONull.setTipoSanguineo("O");
-        sONull.setFatorRh("Null");
-        ONull = new BolsaDeSangue(sONull.getId());
     }
 }

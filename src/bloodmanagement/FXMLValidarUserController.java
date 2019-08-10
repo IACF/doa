@@ -70,7 +70,7 @@ public class FXMLValidarUserController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        txtCPF = null;
     }    
 
     public static String getCpf_analisar() {
