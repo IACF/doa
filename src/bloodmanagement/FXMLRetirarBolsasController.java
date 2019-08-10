@@ -204,8 +204,6 @@ public class FXMLRetirarBolsasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         txtQTD = null;
-        cbTipo = null;
-        cbRH = null;
         carregarBolsas();
         carregarTiposSangue();
         carregarFatoresRH();

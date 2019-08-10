@@ -335,13 +335,10 @@ public class FXMLCadastrar_UserController implements Initializable {
         txtCPF = null;
         txtRG = null;
         txtOrgao = null;
-        spUF = null;
         dpNasc = null;
         txtAltura = null;
         chDoador = null;
         txtPeso = null;
-        cbTipo = null;
-        cbRH = null;
         chCheckup = null;
         txtTel = null;
         txtbAdc = null;
