@@ -223,5 +223,7 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
         cbDoador.setSelected(false);
         cbCheckup.setSelected(false);
         cbCheckup2.setSelected(false);
+        flagAltura = false;
+        flagPeso = false;
     }
 }

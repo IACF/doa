@@ -297,5 +297,7 @@ public class FXMLRetirarBolsasController implements Initializable {
         txtQTD.clear();
         cbTipo.getSelectionModel().clearSelection();
         cbRH.getSelectionModel().clearSelection();
+        flagQtd = false;
+        flagSangue = false;
     }
 }

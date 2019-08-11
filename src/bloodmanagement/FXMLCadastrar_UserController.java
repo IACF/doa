@@ -100,7 +100,8 @@ public class FXMLCadastrar_UserController implements Initializable {
     
     private LocalDate nascimento;
     
-    private boolean flagPeso, flagAltura, flagTel, flagRG, flagCPF, flagNasc;
+    private boolean flagPeso = false, flagAltura = false, flagTel = false, 
+                    flagRG = false, flagCPF = false, flagNasc = false;
     
     @FXML
     private void voltarTelaInincial(ActionEvent event) throws Exception{
@@ -132,6 +133,8 @@ public class FXMLCadastrar_UserController implements Initializable {
                 dialogoErro.setHeaderText("Necessário ao candidato a doador" + 
                                           "realizar exames de Check-Up!!");
                 dialogoErro.showAndWait();
+                limparCampos();
+                BloodManagement.mudarTela("principal", 0);
             }else if (!(chCheckup2.selectedProperty().getValue())){
                 Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
                 dialogoAviso.setTitle("AVISO");
@@ -444,5 +447,11 @@ public class FXMLCadastrar_UserController implements Initializable {
         spUF.getSelectionModel().clearSelection();
         cbTipo.getSelectionModel().clearSelection();
         cbRH.getSelectionModel().clearSelection();
+        flagPeso = false;
+        flagAltura = false;
+        flagTel = false;
+        flagRG = false;
+        flagCPF = false;
+        flagNasc = false;
     }
 }
