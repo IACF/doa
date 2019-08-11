@@ -44,7 +44,7 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
     private CheckBox cbCheckup2; 
     
     @FXML
-    private Label lblNomeDoador;
+    private static Label lblNomeDoador;
     
     private double peso, altura;
     
@@ -65,6 +65,7 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
     Individuo ind = new Individuo();
     Individuo atual = ind.find(cpf_analize);
     
+    
     @FXML
     private void voltarTelaInincial(ActionEvent event) throws Exception{
         limparCampos();
@@ -77,14 +78,14 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
     
     @FXML
     private void atualizarDados(){
-                       
+           
         atual.setCheckUp(cbCheckup.selectedProperty().getValue());
         atual.setCheckUp2(cbCheckup2.selectedProperty().getValue());
         atual.setDoadorMedula(cbDoador.selectedProperty().getValue());
         atual.setObservacoes(atual.getObservacoes()+". "+ txtbAdc.getText()); // Verificar
         
-            if(txtPeso.getText() == null ||
-               txtAltura.getText() == null){
+            if(txtPeso.getText().trim().isEmpty()||
+               txtAltura.getText().trim().isEmpty()){
                 Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
                 dialogoErro.setTitle("ERRO");
                 dialogoErro.setHeaderText("Campos vazios encontrados!!!");
@@ -97,6 +98,8 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
                     dialogoErro.setHeaderText("Necessário ao candidato a doador realizar" +
                             "exames de Check-Up!!");
                     dialogoErro.showAndWait();
+                    limparCampos();
+                    BloodManagement.mudarTela("principal", 0);
                 }else if (!(atual.getCheckUp2())){
                     Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
                     dialogoAviso.setTitle("AVISO");
@@ -124,7 +127,7 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
                         dialogoErro.setHeaderText("Peso inválido digitado!!");
                         dialogoErro.showAndWait();
                         flagPeso = false;
-                    }else{
+                    }else if (flagPeso){
                         atual.setPeso(peso);
                         if(atual.getPeso() < 50){
                             Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
@@ -154,7 +157,7 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
                         dialogoErro.setHeaderText("Altura inválida digitada!!");
                         dialogoErro.showAndWait();
                         flagAltura = false;
-                    }else{
+                    }else if(flagAltura){
                         atual.setAltura(altura);
                         if(altura < 100){
                             Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
@@ -197,15 +200,21 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
                 }
             }
     }
+    
     /**
      * Initializes the controller class.
      * @param url
      * @param rb
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        lblNomeDoador.setText(atual.getNome());
-    }    
+        //TODO
+    }
+    
+    public static void inserirNome(String s){
+        lblNomeDoador.setText(s);
+    }
     
     public void limparCampos(){
         txtbAdc.clear();
@@ -213,7 +222,6 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
         txtAltura.clear();
         cbDoador.setSelected(false);
         cbCheckup.setSelected(false);
-        cbCheckup2.setSelected(false); 
-        lblNomeDoador.setText("");
+        cbCheckup2.setSelected(false);
     }
 }

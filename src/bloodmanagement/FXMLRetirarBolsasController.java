@@ -63,7 +63,7 @@ public class FXMLRetirarBolsasController implements Initializable {
     BolsaDeSangue AMais, BMais, ABMais, OMais,
                   AMenos, BMenos, ABMenos, OMenos;
     
-    private boolean flagQtd, flagSangue;
+    private boolean flagQtd = false, flagSangue = false;
     
     /**
      * Initializes the controller class.
@@ -96,11 +96,9 @@ public class FXMLRetirarBolsasController implements Initializable {
                 dialogoErro.setHeaderText("Quantidade de bolsas inválida digitada!!");
                 dialogoErro.showAndWait();
                 flagQtd = false;
-            }else{
-                flagQtd = true;
             }
             
-            if(cbTipo.getValue() == null ||cbRH.getValue() == null){
+            if(cbTipo.getSelectionModel().isEmpty()||cbRH.getSelectionModel().isEmpty()){
                 Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
                 dialogoErro.setTitle("ERRO");
                 dialogoErro.setHeaderText("Tipo de sangue e/ou tipo de RH não " +
@@ -110,6 +108,7 @@ public class FXMLRetirarBolsasController implements Initializable {
             }else{
                 flagSangue = true;
             }
+            
             if(flagSangue && flagQtd){
                 switch (cbRH.getValue().getNome()) {
                     case "+":
@@ -295,14 +294,6 @@ public class FXMLRetirarBolsasController implements Initializable {
     }
     
     public void limparCampos(){
-        lblAMenos.setText("");
-        lblAMais.setText("");
-        lblBMenos.setText("");
-        lblBMais.setText("");
-        lblABMenos.setText(""); 
-        lblABMais.setText(""); 
-        lblOMenos.setText(""); 
-        lblOMais.setText("");
         txtQTD.clear();
         cbTipo.getSelectionModel().clearSelection();
         cbRH.getSelectionModel().clearSelection();

@@ -111,18 +111,17 @@ public class FXMLCadastrar_UserController implements Initializable {
     @FXML
     private void cadastrarDoador(ActionEvent event) throws Exception{
             
-            if(txtNome.getText() == null ||
-               txtCPF.getText() == null ||
-               txtRG.getText() == null ||
-               txtOrgao.getText() == null ||
-               spUF.getValue() == null ||
-               dpNasc.getValue() == null ||
-               cbTipo.getValue() == null ||
-               cbRH.getValue() == null ||
-               txtAltura.getText() == null ||
-               txtPeso.getText() == null ||
-               txtTel.getText() == null ||
-               dpNasc.getValue() == null){
+            if(txtNome.getText().trim().isEmpty()||
+               txtCPF.getText().trim().isEmpty()||
+               txtRG.getText().trim().isEmpty() ||
+               txtOrgao.getText().trim().isEmpty()||
+               spUF.getValue() == null||
+               dpNasc.getValue() == null||
+               cbTipo.getSelectionModel().isEmpty()||
+               cbRH.getSelectionModel().isEmpty()||
+               txtAltura.getText().trim().isEmpty()||
+               txtPeso.getText().trim().isEmpty()||
+               txtTel.getText().trim().isEmpty()){
                 Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
                 dialogoErro.setTitle("ERRO");
                 dialogoErro.setHeaderText("Campos vazios encontrados!!!");
@@ -195,8 +194,7 @@ public class FXMLCadastrar_UserController implements Initializable {
                         dialogoErro.setHeaderText("Peso inválido digitado!!");
                         dialogoErro.showAndWait();
                         flagPeso = false;
-                    }else{
-                        flagPeso = true;
+                    }else if (flagPeso){
                         if (peso < 50){
                             Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
                             dialogoAviso.setTitle("AVISO");
@@ -225,8 +223,7 @@ public class FXMLCadastrar_UserController implements Initializable {
                         dialogoErro.setHeaderText("Altura inválido digitada!!");
                         dialogoErro.showAndWait();
                         flagAltura = false;
-                    }else{
-                        flagAltura = true;
+                    }else if (flagAltura){
                         if (altura < 100){
                             Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
                             dialogoAviso.setTitle("AVISO");
@@ -266,8 +263,6 @@ public class FXMLCadastrar_UserController implements Initializable {
                         dialogoErro.setHeaderText("Telefone inválido digitado!!");
                         dialogoErro.showAndWait();
                         flagTel = false;
-                    }else{
-                        flagTel = true;
                     }
          
                     try{
@@ -290,8 +285,6 @@ public class FXMLCadastrar_UserController implements Initializable {
                         dialogoErro.setHeaderText("CPF inválido digitado!!");
                         dialogoErro.showAndWait();
                         flagCPF = false;
-                    }else{
-                        flagCPF = true;
                     }
                     
                     if(flagPeso && flagAltura && flagTel && flagRG && flagCPF){

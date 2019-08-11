@@ -43,12 +43,12 @@
       </Button>
       <TextField fx:id="txtPeso" layoutX="219.0" layoutY="129.0" prefHeight="25.0" prefWidth="86.0" promptText="50" />
       <TextField fx:id="txtAltura" layoutX="461.0" layoutY="131.0" prefHeight="25.0" prefWidth="86.0" promptText="170" />
-      <CheckBox fx:id="cbDoador" layoutX="442.0" layoutY="174.0" mnemonicParsing="false">
+      <CheckBox fx:id="cbCheckup" layoutX="442.0" layoutY="174.0" mnemonicParsing="false">
          <font>
             <Font size="14.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="cbCheckup" layoutX="442.0" layoutY="213.0" mnemonicParsing="false">
+      <CheckBox fx:id="cbDoador" layoutX="442.0" layoutY="213.0" mnemonicParsing="false">
          <font>
             <Font size="14.0" />
          </font>
@@ -58,7 +58,7 @@
             <Font name="Lucida Bright Demibold Italic" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="460.0" layoutY="382.0" mnemonicParsing="false" onAction="#voltarTelaInincial" text="Voltar à Tela Inicial">
+      <Button layoutX="471.0" layoutY="384.0" mnemonicParsing="false" onAction="#voltarTelaInincial" text="Voltar à Tela Inicial">
          <font>
             <Font name="Lucida Bright Regular" size="14.0" />
          </font>
