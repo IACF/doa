@@ -56,11 +56,18 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
     
     private boolean flagAltura=false, flagPeso=false;
     
+    private static String cpf_analize;
+    
+    public static void setarCPFvalidar(String s){
+        cpf_analize = s;
+    }
+    
     Individuo ind = new Individuo();
-    Individuo atual = ind.find(FXMLValidarUserController.getCpf_analisar());
+    Individuo atual = ind.find(cpf_analize);
     
     @FXML
     private void voltarTelaInincial(ActionEvent event) throws Exception{
+        limparCampos();
         BloodManagement.mudarTela("principal", 0);
     }
     
@@ -70,8 +77,6 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
     
     @FXML
     private void atualizarDados(){
-        
-        System.out.println(FXMLValidarUserController.getCpf_analisar());
                        
         atual.setCheckUp(cbCheckup.selectedProperty().getValue());
         atual.setCheckUp2(cbCheckup2.selectedProperty().getValue());
@@ -98,6 +103,7 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
                     dialogoAviso.setHeaderText("Doador incapacitado de doar sangue,");
                     dialogoAviso.setContentText("porque não passou nos exames de Check-Up");
                     dialogoAviso.showAndWait();
+                    limparCampos();
                     BloodManagement.mudarTela("principal", 0);
                 }else{
                 
@@ -126,6 +132,7 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
                             dialogoAviso.setHeaderText("Doador incapacitado de doar sangue,");
                             dialogoAviso.setContentText("porque possui peso abaixo do permitido");
                             dialogoAviso.showAndWait();
+                            limparCampos();
                             BloodManagement.mudarTela("principal", 0);
                         }
                     }
@@ -155,6 +162,7 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
                             dialogoAviso.setHeaderText("Doador incapacitado de doar sangue,");
                             dialogoAviso.setContentText("porque possui altura abaixo da permitida");
                             dialogoAviso.showAndWait();
+                            limparCampos();
                             BloodManagement.mudarTela("principal", 0);
                         }
                     }
@@ -182,7 +190,7 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
                             dialogoInfo.setHeaderText("Doação foi realizada com sucesso!!");
                             dialogoInfo.showAndWait();
                         }
-   
+                        limparCampos();
                         BloodManagement.mudarTela("principal", 0);
                         
                     }
@@ -197,12 +205,15 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         lblNomeDoador.setText(atual.getNome());
-        txtbAdc = null;
-        txtPeso = null;
-        txtAltura = null;
-        cbDoador = null;
-        cbCheckup = null;
-        cbCheckup2 = null;
     }    
     
+    public void limparCampos(){
+        txtbAdc.clear();
+        txtPeso.clear();
+        txtAltura.clear();
+        cbDoador.setSelected(false);
+        cbCheckup.setSelected(false);
+        cbCheckup2.setSelected(false); 
+        lblNomeDoador.setText("");
+    }
 }

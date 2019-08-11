@@ -32,6 +32,7 @@ public class FXMLValidarUserController implements Initializable {
     
     @FXML
     private void voltarTelaInincial(ActionEvent event) throws Exception{
+        txtCPF.clear();
         BloodManagement.mudarTela("principal", 0);
     }
     
@@ -57,6 +58,8 @@ public class FXMLValidarUserController implements Initializable {
                 dialogoErro.setHeaderText("CPF digitado não foi encontrado!!");
                 dialogoErro.showAndWait();
             }else{
+                FXMLAtualizarDoadorExistenteController.setarCPFvalidar(txtCPF.getText());
+                txtCPF.clear();
                 BloodManagement.mudarTela("atualizar", 0);
             }
         }
@@ -70,11 +73,7 @@ public class FXMLValidarUserController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        txtCPF = null;
-    }    
-
-    public static String getCpf_analisar() {
-        return Long.toString(cpf_analisar);
+        //TODO
     }
     
 }

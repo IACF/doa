@@ -104,6 +104,7 @@ public class FXMLCadastrar_UserController implements Initializable {
     
     @FXML
     private void voltarTelaInincial(ActionEvent event) throws Exception{
+        limparCampos();
         BloodManagement.mudarTela("principal", 0);
     }
     
@@ -138,6 +139,7 @@ public class FXMLCadastrar_UserController implements Initializable {
                 dialogoAviso.setHeaderText("Candidato a doador incapacitado de doar sangue,");
                 dialogoAviso.setContentText("porque não passou nos exames de Check-Up");
                 dialogoAviso.showAndWait();
+                limparCampos();
                 BloodManagement.mudarTela("principal", 0);
             }else{
             
@@ -161,6 +163,7 @@ public class FXMLCadastrar_UserController implements Initializable {
                     dialogoAviso.setHeaderText("Candidato a doador incapacitado de doar sangue,");
                     dialogoAviso.setContentText("porque possui idade inferior a 18 anos");
                     dialogoAviso.showAndWait();
+                    limparCampos();
                     BloodManagement.mudarTela("principal", 0);
                 }
             }else if (flagNasc && ((sistema.getYear() - dpNasc.getValue().getYear()) >= 69)){
@@ -171,6 +174,7 @@ public class FXMLCadastrar_UserController implements Initializable {
                     dialogoAviso.setHeaderText("Candidato a doador incapacitado de doar sangue,");
                     dialogoAviso.setContentText("porque possui idade superior a 69 anos");
                     dialogoAviso.showAndWait();
+                    limparCampos();
                     BloodManagement.mudarTela("principal", 0);
                 }
             }else{           
@@ -199,6 +203,7 @@ public class FXMLCadastrar_UserController implements Initializable {
                             dialogoAviso.setHeaderText("Candidato a doador incapacitado de doar sangue,");
                             dialogoAviso.setContentText("porque possui peso abaixo do permitido");
                             dialogoAviso.showAndWait();
+                            limparCampos();
                             BloodManagement.mudarTela("principal", 0);
                         }
                     }
@@ -228,6 +233,7 @@ public class FXMLCadastrar_UserController implements Initializable {
                             dialogoAviso.setHeaderText("Candidato a doador incapacitado de doar sangue,");
                             dialogoAviso.setContentText("porque possui altura abaixo da permitida");
                             dialogoAviso.showAndWait();
+                            limparCampos();
                             BloodManagement.mudarTela("principal", 0);
                         }
                     }
@@ -321,7 +327,7 @@ public class FXMLCadastrar_UserController implements Initializable {
                         dialogoInfo.setTitle("SUCESSO");
                         dialogoInfo.setHeaderText("Cadastro foi realizado com sucesso!!");
                         dialogoInfo.showAndWait();
-                    
+                        limparCampos();
                         BloodManagement.mudarTela("principal", 0);
                     }
                     
@@ -331,18 +337,6 @@ public class FXMLCadastrar_UserController implements Initializable {
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        txtNome = null;
-        txtCPF = null;
-        txtRG = null;
-        txtOrgao = null;
-        dpNasc = null;
-        txtAltura = null;
-        chDoador = null;
-        txtPeso = null;
-        chCheckup = null;
-        txtTel = null;
-        txtbAdc = null;
-        chCheckup2 = null;
         carregarTiposSangue();
         carregarFatoresRH();
         carregarUF();
@@ -439,5 +433,23 @@ public class FXMLCadastrar_UserController implements Initializable {
         obsEstados = FXCollections.observableArrayList(estados);
         
         spUF.setItems(obsEstados);
+    }
+    
+    public void limparCampos(){
+        txtNome.clear();
+        txtCPF.clear();
+        txtRG.clear();
+        txtOrgao.clear();
+        dpNasc.setValue(null);
+        txtAltura.clear();
+        chDoador.setSelected(false);
+        txtPeso.clear();
+        chCheckup.setSelected(false);
+        txtTel.clear();
+        txtbAdc.clear();
+        chCheckup2.setSelected(false);
+        spUF.getSelectionModel().clearSelection();
+        cbTipo.getSelectionModel().clearSelection();
+        cbRH.getSelectionModel().clearSelection();
     }
 }

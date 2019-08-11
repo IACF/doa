@@ -71,6 +71,7 @@ public class FXMLRetirarBolsasController implements Initializable {
     
     @FXML
     private void voltarTelaInincial(ActionEvent event) throws Exception{
+        limparCampos();
         BloodManagement.mudarTela("principal", 0);
     }
     
@@ -151,6 +152,7 @@ public class FXMLRetirarBolsasController implements Initializable {
                     dialogoAviso.setTitle("AVISO");
                     dialogoAviso.setHeaderText("Não foi possível obter a quantidade desejada!!");
                     dialogoAviso.showAndWait();
+                    limparCampos();
                     BloodManagement.mudarTela("principal", 0);
                 }else{
                 
@@ -195,6 +197,7 @@ public class FXMLRetirarBolsasController implements Initializable {
                     dialogoInfo.setTitle("SUCESSO");
                     dialogoInfo.setHeaderText("Retirada efetuada com sucesso!!");
                     dialogoInfo.showAndWait();
+                    limparCampos();
                     BloodManagement.mudarTela("principal", 0);
                 }
             }
@@ -203,7 +206,6 @@ public class FXMLRetirarBolsasController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        txtQTD = null;
         carregarBolsas();
         carregarTiposSangue();
         carregarFatoresRH();
@@ -290,5 +292,19 @@ public class FXMLRetirarBolsasController implements Initializable {
         sOMenos.setTipoSanguineo("O");
         sOMenos.setFatorRh("-");
         OMenos = new BolsaDeSangue(sOMenos.getId());
+    }
+    
+    public void limparCampos(){
+        lblAMenos.setText("");
+        lblAMais.setText("");
+        lblBMenos.setText("");
+        lblBMais.setText("");
+        lblABMenos.setText(""); 
+        lblABMais.setText(""); 
+        lblOMenos.setText(""); 
+        lblOMais.setText("");
+        txtQTD.clear();
+        cbTipo.getSelectionModel().clearSelection();
+        cbRH.getSelectionModel().clearSelection();
     }
 }
