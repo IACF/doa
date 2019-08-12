@@ -80,8 +80,6 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
         
         Individuo ind = new Individuo();
         Individuo atual = ind.find(cpf_analize);
-         
-        System.out.println("CPF analise "+ atual.getCpf());
         
         atual.setCheckUp(cbCheckup.selectedProperty().getValue());
         atual.setCheckUp2(cbCheckup2.selectedProperty().getValue());
