@@ -60,6 +60,7 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
     
     public static void setarCPFvalidar(String s){
         cpf_analize = s;
+        
         System.out.println(s);
         System.out.println(cpf_analize);
     }
@@ -214,9 +215,11 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //TODO
+        lblNomeDoador.setVisible(false);
     }
     
     public void limparCampos(){
+        System.out.println("funcinoa");
         txtbAdc.clear();
         txtPeso.clear();
         txtAltura.clear();

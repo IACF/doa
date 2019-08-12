@@ -314,6 +314,9 @@ public class FXMLRetirarBolsasController implements Initializable {
     }
     
     public void limparCampos(){
+        System.out.println("limpar");
+        carregarBolsas();
+        carregarQuantidades();
         txtQTD.clear();
         cbTipo.getSelectionModel().clearSelection();
         cbRH.getSelectionModel().clearSelection();

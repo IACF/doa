@@ -49,7 +49,8 @@ public class Sangue implements IDAO<Object>{
 
     public int getId() {
         int sangue_id = ((Sangue) this.dao.find(tipoSanguineo, fatorRh)).Id;
-        if (sangue_id <= 0) {
+        if (sangue_id < 0) {
+            System.out.println(sangue_id);
             System.out.println("Tipo sanguineo ou fator rh inválido.");
             return -1;
         }
