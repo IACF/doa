@@ -44,7 +44,7 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
     private CheckBox cbCheckup2; 
     
     @FXML
-    private static Label lblNomeDoador;
+    private Label lblNomeDoador;
     
     private double peso, altura;
     
@@ -60,11 +60,10 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
     
     public static void setarCPFvalidar(String s){
         cpf_analize = s;
+        System.out.println(s);
+        System.out.println(cpf_analize);
     }
-    
-    Individuo ind = new Individuo();
-    Individuo atual = ind.find(cpf_analize);
-    
+     
     
     @FXML
     private void voltarTelaInincial(ActionEvent event) throws Exception{
@@ -78,7 +77,12 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
     
     @FXML
     private void atualizarDados(){
-           
+        
+        Individuo ind = new Individuo();
+        Individuo atual = ind.find(cpf_analize);
+         
+        System.out.println("CPF analise "+ atual.getCpf());
+        
         atual.setCheckUp(cbCheckup.selectedProperty().getValue());
         atual.setCheckUp2(cbCheckup2.selectedProperty().getValue());
         atual.setDoadorMedula(cbDoador.selectedProperty().getValue());
@@ -210,10 +214,6 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //TODO
-    }
-    
-    public static void inserirNome(String s){
-        lblNomeDoador.setText(s);
     }
     
     public void limparCampos(){

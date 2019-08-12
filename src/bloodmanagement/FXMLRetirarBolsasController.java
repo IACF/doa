@@ -78,6 +78,8 @@ public class FXMLRetirarBolsasController implements Initializable {
     
     @FXML
     private void retirarBolsas(){
+            carregarBolsas();
+            carregarQuantidades();
         
             try{
                 quantidadePedida = Integer.parseInt(txtQTD.getText());
@@ -110,6 +112,7 @@ public class FXMLRetirarBolsasController implements Initializable {
             }
             
             if(flagSangue && flagQtd){
+                System.out.println("Entrei");
                 switch (cbRH.getValue().getNome()) {
                     case "+":
                         switch(cbTipo.getValue().getNome()){
@@ -154,7 +157,7 @@ public class FXMLRetirarBolsasController implements Initializable {
                     limparCampos();
                     BloodManagement.mudarTela("principal", 0);
                 }else{
-                
+                    System.out.println("Entrei");
                     //AQUI FAZ A ALTERAÇÃO DO NÚMERO DE BOLSAS
                     
                     switch (cbRH.getValue().getNome()) {
@@ -197,7 +200,6 @@ public class FXMLRetirarBolsasController implements Initializable {
                     dialogoInfo.setHeaderText("Retirada efetuada com sucesso!!");
                     dialogoInfo.showAndWait();
                     limparCampos();
-                    recarregarDetalhes();
                     BloodManagement.mudarTela("principal", 0);
                 }
             }
@@ -206,12 +208,15 @@ public class FXMLRetirarBolsasController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        System.out.println("initialize");
         carregarTiposSangue();
         carregarFatoresRH();
-    }    
+        carregarBolsas();
+        carregarQuantidades();
+    }
     
     public void carregarTiposSangue(){
-        
+        System.out.println("tipoDeSangue");
         TipoSangue a = new TipoSangue(1, "A");
         TipoSangue b = new TipoSangue(2, "B");
         TipoSangue ab = new TipoSangue(3, "AB");
@@ -225,10 +230,16 @@ public class FXMLRetirarBolsasController implements Initializable {
         obsSangue = FXCollections.observableArrayList(sangue);
         
         cbTipo.setItems(obsSangue);
+        
+        Sangue s = new Sangue();
+        s.setFatorRh("+");
+        s.setTipoSanguineo("O");
+        BolsaDeSangue bb = new BolsaDeSangue(s.getId());
+        lblOMais.setText(Integer.toString(bb.quantidade(s.getId())));
     }
     
     public void carregarFatoresRH(){
-        
+        System.out.println("FatorRh");
         FatorRH mais = new FatorRH(1,"+");
         FatorRH menos = new FatorRH(2,"-");
         
@@ -242,12 +253,22 @@ public class FXMLRetirarBolsasController implements Initializable {
     }
     
     public void carregarQuantidades(){
-        // Aqui entra a conexão com o banco, linkando com as variáveis lbl
+        
+// Aqui entra a conexão com o banco, linkando com as variáveis lbl
+        System.out.println("akjdhaskdjh");
+        System.out.println((Integer.toString(AMais.quantidade(sAMais.getId()))));
+        
+//        Sangue s = new Sangue();
+//        s.setFatorRh("+");
+//        s.setTipoSanguineo("O");
+//        BolsaDeSangue b = new BolsaDeSangue(s.getId());
+//        lblOMais.setText(Integer.toString(b.quantidade(s.getId())));
+//        
         
         lblAMais.setText(Integer.toString(AMais.quantidade(sAMais.getId())));
         lblBMais.setText(Integer.toString(BMais.quantidade(sBMais.getId())));
         lblABMais.setText(Integer.toString(ABMais.quantidade(sABMais.getId())));
-        lblOMais.setText(Integer.toString(OMais.quantidade(sOMais.getId())));
+//        lblOMais.setText(Integer.toString(OMais.quantidade(sOMais.getId())));
         
         
         lblAMenos.setText(Integer.toString(AMenos.quantidade(sAMenos.getId())));
@@ -298,10 +319,5 @@ public class FXMLRetirarBolsasController implements Initializable {
         cbRH.getSelectionModel().clearSelection();
         flagQtd = false;
         flagSangue = false;
-    }
-    
-    private void recarregarDetalhes(){
-        carregarBolsas();
-        carregarQuantidades();
     }
 }
