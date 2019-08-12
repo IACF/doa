@@ -7,6 +7,7 @@ package bloodmanagement;
 
 import BolsaDeSangue.BolsaDeSangue;
 import Individuo.Individuo;
+import static java.lang.Math.pow;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -174,7 +175,15 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
                     }
                 
                     if (flagAltura && flagPeso){
-                        
+                        if(((peso/pow(altura,2)<15) || (peso/pow(altura,2) > 35))){
+                            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                            dialogoAviso.setTitle("AVISO");
+                            dialogoAviso.setHeaderText("Candidato a doador incapacitado de doar sangue,");
+                            dialogoAviso.setContentText("porque possui IMC abaixo ou acima do possível para doação");
+                            dialogoAviso.showAndWait();
+                            limparCampos();
+                            BloodManagement.mudarTela("principal", 0);
+                    }
                         //AQUI FAZ AS ATUALIZAÇÕES DO BANCO
                         
                         atual.update();
@@ -212,12 +221,10 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //TODO
         lblNomeDoador.setVisible(false);
     }
     
     public void limparCampos(){
-        System.out.println("funcinoa");
         txtbAdc.clear();
         txtPeso.clear();
         txtAltura.clear();

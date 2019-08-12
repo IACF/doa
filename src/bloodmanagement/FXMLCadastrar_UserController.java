@@ -10,6 +10,7 @@ import Sangue.Sangue;
 import bloodmanagementmodels.Estados;
 import bloodmanagementmodels.FatorRH;
 import bloodmanagementmodels.TipoSangue;
+import static java.lang.Math.pow;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -237,7 +238,17 @@ public class FXMLCadastrar_UserController implements Initializable {
                             BloodManagement.mudarTela("principal", 0);
                         }
                     }
-        
+                    
+                    if((flagAltura && flagPeso)&&((peso/pow(altura,2)<15) || (peso/pow(altura,2) > 35))){
+                        Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                        dialogoAviso.setTitle("AVISO");
+                        dialogoAviso.setHeaderText("Candidato a doador incapacitado de doar sangue,");
+                        dialogoAviso.setContentText("porque possui IMC abaixo ou acima do possível para doação");
+                        dialogoAviso.showAndWait();
+                        limparCampos();
+                        BloodManagement.mudarTela("principal", 0);
+                    }
+                    
                     try{
                         rg = (Long.parseLong(txtRG.getText()));
                         flagRG = true;
