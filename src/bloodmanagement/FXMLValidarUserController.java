@@ -39,6 +39,8 @@ public class FXMLValidarUserController implements Initializable {
     @FXML
     private void verificarCPF(){
         
+        flagCPF = false;
+        
         try{
             cpf_analisar = (Long.parseLong(txtCPF.getText()));
             flagCPF = true;
@@ -62,7 +64,6 @@ public class FXMLValidarUserController implements Initializable {
                 FXMLAtualizarDoadorExistenteController.inserirNome(ind.getNome());
                 FXMLAtualizarDoadorExistenteController.setarCPFvalidar(txtCPF.getText());
                 txtCPF.clear();
-                flagCPF = false;
                 BloodManagement.mudarTela("atualizar", 0);
             }
         }
