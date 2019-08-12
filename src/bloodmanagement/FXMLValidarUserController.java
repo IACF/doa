@@ -60,11 +60,11 @@ public class FXMLValidarUserController implements Initializable {
                 dialogoErro.setHeaderText("CPF digitado não foi encontrado!!");
                 dialogoErro.showAndWait();
             }else{
-                System.out.println("txtCPF "+txtCPF.getText());
-                System.out.println("nome "+ ind.find(Long.toString(cpf_analisar)).getNome());
+
                 FXMLAtualizarDoadorExistenteController.setarCPFvalidar(txtCPF.getText());
-                BloodManagement.mudarTela("atualizar", 0);        
-            }
+                BloodManagement.mudarTela("atualizar", 0); 
+                txtCPF.clear();
+            } 
         }
     }
     
