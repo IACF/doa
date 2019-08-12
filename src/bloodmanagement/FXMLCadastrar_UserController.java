@@ -305,7 +305,15 @@ public class FXMLCadastrar_UserController implements Initializable {
                         
                         Individuo ind = new Individuo();
                         Sangue s = new Sangue();
-                    
+                        
+                        if(ind.find(Long.toString(cpf)) != null){
+                            Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
+                            dialogoAviso.setTitle("AVISO");
+                            dialogoAviso.setHeaderText("Doador já cadastrado, novo cadastro é inválido!!");
+                            dialogoAviso.showAndWait();
+                            limparCampos();
+                            BloodManagement.mudarTela("principal", 0);
+                        }
                         //BANCO DE SANGUE
                     
                         s.setTipoSanguineo(cbTipo.getValue().getNome());

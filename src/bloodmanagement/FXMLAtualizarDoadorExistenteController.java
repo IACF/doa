@@ -175,7 +175,7 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
                     }
                 
                     if (flagAltura && flagPeso){
-                        if(((peso/pow(altura,2)<15) || (peso/pow(altura,2) > 35))){
+                        if(((peso/pow(altura,2) < 15) || (peso/pow(altura,2) > 35))){
                             Alert dialogoAviso = new Alert(Alert.AlertType.WARNING);
                             dialogoAviso.setTitle("AVISO");
                             dialogoAviso.setHeaderText("Candidato a doador incapacitado de doar sangue,");
