@@ -197,6 +197,7 @@ public class FXMLRetirarBolsasController implements Initializable {
                     dialogoInfo.setHeaderText("Retirada efetuada com sucesso!!");
                     dialogoInfo.showAndWait();
                     limparCampos();
+                    recarregarDetalhes();
                     BloodManagement.mudarTela("principal", 0);
                 }
             }
@@ -205,10 +206,8 @@ public class FXMLRetirarBolsasController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        carregarBolsas();
         carregarTiposSangue();
         carregarFatoresRH();
-        carregarQuantidades();
     }    
     
     public void carregarTiposSangue(){
@@ -299,5 +298,10 @@ public class FXMLRetirarBolsasController implements Initializable {
         cbRH.getSelectionModel().clearSelection();
         flagQtd = false;
         flagSangue = false;
+    }
+    
+    private void recarregarDetalhes(){
+        carregarBolsas();
+        carregarQuantidades();
     }
 }
