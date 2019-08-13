@@ -102,7 +102,8 @@ public class FXMLCadastrar_UserController implements Initializable {
     private LocalDate nascimento;
     
     private boolean flagPeso = false, flagAltura = false, flagTel = false, 
-                    flagRG = false, flagCPF = false, flagNasc = false;
+                    flagRG = false, flagCPF = false, flagNasc = false, 
+                    flagIMC = true;
     
     @FXML
     private void voltarTelaInincial(ActionEvent event) throws Exception{
@@ -112,7 +113,7 @@ public class FXMLCadastrar_UserController implements Initializable {
     
     @FXML
     private void cadastrarDoador(ActionEvent event) throws Exception{
-            
+            flagIMC = true;
             if(txtNome.getText().trim().isEmpty()||
                txtCPF.getText().trim().isEmpty()||
                txtRG.getText().trim().isEmpty() ||
@@ -245,6 +246,7 @@ public class FXMLCadastrar_UserController implements Initializable {
                         dialogoAviso.setHeaderText("Candidato a doador incapacitado de doar sangue,");
                         dialogoAviso.setContentText("porque possui IMC abaixo ou acima do possível para doação");
                         dialogoAviso.showAndWait();
+                        flagIMC = false;
                         limparCampos();
                         BloodManagement.mudarTela("principal", 0);
                     }
@@ -301,7 +303,7 @@ public class FXMLCadastrar_UserController implements Initializable {
                         flagCPF = false;
                     }
                     
-                    if(flagPeso && flagAltura && flagTel && flagRG && flagCPF){
+                    if(flagPeso && flagAltura && flagTel && flagRG && flagCPF && flagIMC){
                         
                         Individuo ind = new Individuo();
                         Sangue s = new Sangue();

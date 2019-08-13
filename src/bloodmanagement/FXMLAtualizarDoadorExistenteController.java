@@ -55,7 +55,7 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
     
     private static boolean flag;
     
-    private boolean flagAltura=false, flagPeso=false;
+    private boolean flagAltura=false, flagPeso=false, flagIMC = true;
     
     private static String cpf_analize;
     
@@ -79,7 +79,7 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
     
     @FXML
     private void atualizarDados(){
-        
+        flagIMC = true;
         Individuo ind = new Individuo();
         Individuo atual = ind.find(cpf_analize);
         
@@ -181,18 +181,21 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
                             dialogoAviso.setHeaderText("Candidato a doador incapacitado de doar sangue,");
                             dialogoAviso.setContentText("porque possui IMC abaixo ou acima do possível para doação");
                             dialogoAviso.showAndWait();
+                            flagIMC = false;
                             limparCampos();
                             BloodManagement.mudarTela("principal", 0);
                     }
                         //AQUI FAZ AS ATUALIZAÇÕES DO BANCO
+                        if(flagIMC){
+                            atual.update();
+                            Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
+                            dialogoInfo.setTitle("SUCESSO");
+                            dialogoInfo.setHeaderText("Atualização foi realizada com sucesso!!");
+                            dialogoInfo.showAndWait();
+                        }
                         
-                        atual.update();
-                        Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
-                        dialogoInfo.setTitle("SUCESSO");
-                        dialogoInfo.setHeaderText("Atualização foi realizada com sucesso!!");
-                        dialogoInfo.showAndWait();
                         
-                        if(flag){
+                        if(flag && flagIMC){
                             
                             //AQUI FAZ A CONEXÃO COM O BANCO PARA AUMENTAR NÚMERO DE BOLSAS
                         
@@ -200,7 +203,7 @@ public class FXMLAtualizarDoadorExistenteController implements Initializable {
                             b.save();
                             
                             //AQUI MOSTRA A JANELA DE SUCESSO NA OPERAÇÃO
-                            
+                            Alert dialogoInfo = new Alert(Alert.AlertType.INFORMATION);
                             dialogoInfo.setTitle("SUCESSO");
                             dialogoInfo.setHeaderText("Doação foi realizada com sucesso!!");
                             dialogoInfo.showAndWait();
